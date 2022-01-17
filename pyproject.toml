@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "customer_segmentation"
+version = "0.1.0"
+description = ""
+authors = ["Khuyen <khuyentran1476@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.9"
+pandas = "^1.3.5"
+numpy = ">=1.14.3,<1.21.0"
+matplotlib = "^3.5.1"
+seaborn = "^0.11.2"
+scikit-learn = "^1.0.2"
+kneed = "^0.7.0"
+hydra-core = "^1.1.1"
+prefect = "^0.15.12"
+
+[tool.poetry.dev-dependencies]
+nb-black = "^1.0.7"
+jupyterlab = "^3.2.8"
+ipykernel = "^6.7.0"
+pandasgui = "^0.2.13"
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+	\.git
+| \.hg
+| \.mypy_cache
+| \.tox
+| \.venv
+| _build
+| buck-out
+| build   
+)/ 
+'''

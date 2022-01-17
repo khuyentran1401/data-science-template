@@ -1,0 +1,4 @@
+raw_data: 
+  path: data/marketing_campaign.csv
+  load_kwargs: 
+    sep: "\t"

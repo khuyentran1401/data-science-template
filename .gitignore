@@ -1,0 +1,7 @@
+.pytest_cache
+.vscode
+__pycache__
+outputs
+data
+.DS_Store
+.ipynb_checkpoints
