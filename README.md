@@ -25,7 +25,12 @@ $ poetry shell
 # Install dependencies
 $ poetry install 
 ```
-3. Run the process pipeline:
+3. Pull data from Google Drive
+```bash
+$ dvc pull
+```
+4. Run the process pipeline:
 ```bash
 $ poetry run python src/process_data.py
 ```
+
