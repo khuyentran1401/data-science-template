@@ -14,7 +14,7 @@ scikit-learn = "^1.0.2"
 kneed = "^0.7.0"
 hydra-core = "^1.1.1"
 prefect = "^0.15.12"
-dvc = "^2.9.3"
+dvc = {extras = ["gdrive"], version = "^2.9.3"}
 
 [tool.poetry.dev-dependencies]
 nb-black = "^1.0.7"
