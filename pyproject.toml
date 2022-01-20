@@ -15,6 +15,7 @@ kneed = "^0.7.0"
 hydra-core = "^1.1.1"
 prefect = "^0.15.12"
 dvc = {extras = ["gdrive"], version = "^2.9.3"}
+feature-engine = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 nb-black = "^1.0.7"
@@ -22,6 +23,7 @@ jupyterlab = "^3.2.8"
 ipykernel = "^6.7.0"
 pandasgui = "^0.2.13"
 pytest = "^6.2.5"
+tox = "^3.24.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -41,3 +43,4 @@ exclude = '''
 | build   
 )/ 
 '''
+

@@ -17,17 +17,9 @@ _Note: This project is in progress._
 
 ## How to Run the Project
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
-2. Install dependencies:
+2. Set up the environment:
 ```bash
-# Activate virtual environment
-$ poetry shell
-
-# Install dependencies
-$ poetry install 
-```
-3. Pull data from Google Drive
-```bash
-$ dvc pull
+make setup
 ```
 4. Run the process pipeline:
 ```bash

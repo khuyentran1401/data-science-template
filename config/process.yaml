@@ -1,0 +1,48 @@
+raw_data: 
+  path: data/raw/marketing_campaign.csv
+  load_kwargs: 
+    sep: "\t"
+
+process_data:
+  dir: data/processed
+  filename: processed_data.csv
+  serialize_kwargs:
+    index: false
+
+columns:
+  drop:
+    - ID 
+    - Year_Birth
+    - Dt_Customer
+    - Marital_Status
+    - Z_CostContact
+    - Z_Revenue
+    - Kidhome
+    - Teenhome
+    - total_children
+    # TODO: Add these features later
+    - Education
+    - NumWebPurchases
+    - NumCatalogPurchases
+    - NumStorePurchases
+    - NumDealsPurchases
+    - MntWines
+    - MntFruits
+    - MntMeatProducts
+    - MntFishProducts
+    - MntSweetProducts
+    - MntGoldProds 
+  remove_outliers_threshold:
+    age: 90
+    Income: 600000
+
+encode:
+  family_size:
+    Married: 2
+    Together: 2
+    Absurd: 1
+    Widow: 1
+    YOLO: 1
+    Divorced: 1
+    Single: 1
+
