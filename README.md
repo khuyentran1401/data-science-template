@@ -21,8 +21,8 @@ _Note: This project is in progress._
 ```bash
 make setup
 ```
-4. Run the process pipeline:
+3. Run the process pipeline:
 ```bash
-$ poetry run python src/process_data.py
+poetry run python src/process_data.py
 ```
 

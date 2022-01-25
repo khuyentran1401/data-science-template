@@ -82,8 +82,8 @@ def process_data(config):
     with Flow(
         "process_data",
         result=LocalResult(
-            to_absolute_path(config.process_data.dir),
-            location=config.process_data.filename,
+            to_absolute_path(config.intermediate.dir),
+            location=config.intermediate.name,
             serializer=PandasSerializer("csv"),
         ),
     ) as flow:
@@ -94,6 +94,7 @@ def process_data(config):
         df = drop_na(df)
         df = get_new_features(df, config.encode.family_size)
         df = drop_columns_and_rows(df, config.columns)
+        df = scale_features(df)
 
     return flow.run()
 

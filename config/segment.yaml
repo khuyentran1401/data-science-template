@@ -1,0 +1,28 @@
+project_name: customer_segmentation
+
+intermediate:
+  dir: data/intermediate
+  name: processed.csv
+  deserialize_kwargs:
+    index_col: 0
+
+segmented:
+  dir: data/final
+  name: segmented.csv
+  deserialize_kwargs:
+    index: false
+
+pca:
+  n_components: 3
+  columns:
+  - col1
+  - col2
+  - col3
+
+kmeans:
+  k: 10
+
+image:
+  pca: image/3d_plot.png
+  kmeans: image/elbow.png
+  clusters: image/cluster.png

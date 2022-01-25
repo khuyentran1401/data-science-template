@@ -1,7 +1,7 @@
 import pandas as pd
 from pandas.testing import assert_frame_equal
 
-from src.process_data import (get_age, get_enrollment_years,
+from src.process_data import (get_age, get_enrollment_years, get_family_size,
                               get_total_purchases, scale_features)
 
 
@@ -46,4 +46,23 @@ def test_scale_features():
             }
         ),
         atol=2,
+    )
+
+
+def test_get_family_size():
+    df = pd.DataFrame(
+        {
+            "Marital_Status": ["Married", "Absurd", "Single"],
+            "total_children": [1, 2, 3],
+        }
+    )
+    assert_frame_equal(
+        get_family_size(df, {"Married": 2, "Absurd": 1, "Single": 1}),
+        pd.DataFrame(
+            {
+                "Marital_Status": ["Married", "Absurd", "Single"],
+                "total_children": [1, 2, 3],
+                "family_size": [3, 3, 4],
+            }
+        ),
     )

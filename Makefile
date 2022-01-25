@@ -1,3 +1,5 @@
+.PHONY: notebook
+
 install: 
 	@echo "Installing..."
 	poetry shell
@@ -15,4 +17,13 @@ setup: install startup pull_data
 
 test:
 	poetry run pytest
+
+process:
+	poetry run python src/process_data.py 
+
+segment:
+	poetry run python src/segment.py
+
+notebook:
+	poetry run jupyter notebook
 	

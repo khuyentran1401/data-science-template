@@ -3,11 +3,9 @@ raw_data:
   load_kwargs: 
     sep: "\t"
 
-process_data:
-  dir: data/processed
-  filename: processed_data.csv
-  serialize_kwargs:
-    index: false
+intermediate:
+  dir: data/intermediate
+  name: processed.csv
 
 columns:
   drop:
@@ -45,4 +43,5 @@ encode:
     YOLO: 1
     Divorced: 1
     Single: 1
+    Alone: 1
 
