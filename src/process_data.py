@@ -1,4 +1,3 @@
-import hydra
 import pandas as pd
 from feature_engine.wrappers import SklearnTransformerWrapper
 from hydra.utils import to_absolute_path
@@ -8,10 +7,16 @@ from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.preprocessing import StandardScaler
 
+from helper import log_data
+
 
 @task
 def load_data(data_name: str, load_kwargs: DictConfig) -> pd.DataFrame:
-    return pd.read_csv(data_name, **load_kwargs)
+    data = pd.read_csv(data_name, **load_kwargs)
+
+    log_data(data_name, "raw_data")
+
+    return data
 
 
 @task
@@ -77,27 +82,30 @@ def scale_features(df: pd.DataFrame):
     return scaler.fit_transform(df)
 
 
-@hydra.main(config_path="../config", config_name="process")
-def process_data(config):
+def process_data(config: DictConfig):
+    data_config = config.data_catalog
+    code_config = config.process
+
     with Flow(
         "process_data",
         result=LocalResult(
-            to_absolute_path(config.intermediate.dir),
-            location=config.intermediate.name,
+            to_absolute_path(data_config.intermediate.dir),
+            location=data_config.intermediate.name,
             serializer=PandasSerializer("csv"),
         ),
     ) as flow:
         df = load_data(
-            to_absolute_path(config.raw_data.path),
-            config.raw_data.load_kwargs,
+            to_absolute_path(data_config.raw_data.path),
+            data_config.raw_data.load_kwargs,
         )
         df = drop_na(df)
-        df = get_new_features(df, config.encode.family_size)
-        df = drop_columns_and_rows(df, config.columns)
+        df = get_new_features(df, code_config.encode.family_size)
+        df = drop_columns_and_rows(df, code_config.columns)
         df = scale_features(df)
 
-    return flow.run()
-
-
-if __name__ == "__main__":
-    process_data()
+    flow.run()
+    log_data(
+        data_config.intermediate.name,
+        "preprocessed_data",
+        to_absolute_path(data_config.intermediate.dir),
+    )

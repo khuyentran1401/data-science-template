@@ -1,20 +1,19 @@
 from typing import Tuple
 
-import hydra
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import wandb
 from hydra.utils import to_absolute_path
-from loguru import logger
 from omegaconf import DictConfig
 from prefect import Flow, task
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
-from prefect.utilities.debug import raise_on_exception
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
+
+import wandb
+from helper import log_data
 
 OUTPUT_DIR = "data/final/"
 OUTPUT_FILE = "segmented.csv"
@@ -123,37 +122,39 @@ def plot_clusters(
     wandb.log({"clusters": wandb.Image(image_path)})
 
 
-@logger.catch
-@hydra.main(config_path="../config", config_name="segment")
-def segment(config: DictConfig):
+def segment(config: DictConfig) -> None:
+
+    data_config = config.data_catalog
+    code_config = config.segment
 
     with Flow(
         "segmentation",
     ) as flow:
-        wandb.init(project=config.project_name)
 
         data = (
             LocalResult(
-                dir=to_absolute_path(config.intermediate.dir),
+                dir=to_absolute_path(data_config.intermediate.dir),
                 serializer=PandasSerializer(
                     "csv",
-                    deserialize_kwargs=config.intermediate.deserialize_kwargs,
+                    deserialize_kwargs=data_config.intermediate.deserialize_kwargs,
                 ),
             )
-            .read(location=config.intermediate.name)
+            .read(location=data_config.intermediate.name)
             .value
         )
 
         pca_df = reduce_dimension(
-            data, config.pca.n_components, config.pca.columns
+            data, code_config.pca.n_components, code_config.pca.columns
         )
 
         projections = get_3d_projection(pca_df)
 
-        create_3d_plot(projections, to_absolute_path(config.image.pca))
+        create_3d_plot(projections, to_absolute_path(code_config.image.pca))
 
         k_best = get_best_k_cluster(
-            pca_df, config.kmeans.k, to_absolute_path(config.image.kmeans)
+            pca_df,
+            code_config.kmeans.k,
+            to_absolute_path(code_config.image.kmeans),
         )
 
         preds = get_clusters(pca_df, k_best)
@@ -161,12 +162,15 @@ def segment(config: DictConfig):
         data = insert_clusters_to_df(data, preds)
 
         plot_clusters(
-            pca_df, preds, projections, to_absolute_path(config.image.clusters)
+            pca_df,
+            preds,
+            projections,
+            to_absolute_path(code_config.image.clusters),
         )
 
-    with raise_on_exception():  # debug
-        flow.run()
-
-
-if __name__ == "__main__":
-    segment()
+    flow.run()
+    log_data(
+        data_config.segmented.name,
+        "preprocessed_data",
+        to_absolute_path(data_config.segmented.dir),
+    )

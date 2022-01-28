@@ -1,2 +1,2 @@
 - [ ] track data
-- [ ] track config file
+- [x] track config file

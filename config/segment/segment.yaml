@@ -1,17 +1,5 @@
 project_name: customer_segmentation
 
-intermediate:
-  dir: data/intermediate
-  name: processed.csv
-  deserialize_kwargs:
-    index_col: 0
-
-segmented:
-  dir: data/final
-  name: segmented.csv
-  deserialize_kwargs:
-    index: false
-
 pca:
   n_components: 3
   columns:
