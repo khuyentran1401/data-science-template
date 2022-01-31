@@ -8,6 +8,7 @@ from prefect.engine.serializers import PandasSerializer
 from sklearn.preprocessing import StandardScaler
 
 from helper import log_data
+from wandb import wandb
 
 
 @task
@@ -72,9 +73,11 @@ def drop_outliers(df: pd.DataFrame, column_threshold: dict):
 
 @task
 def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
-    return df.pipe(drop_features, keep_columns=columns["keep"]).pipe(
+    df = df.pipe(drop_features, keep_columns=columns["keep"]).pipe(
         drop_outliers, column_threshold=columns["remove_outliers_threshold"]
     )
+
+    return df
 
 
 @task
@@ -111,3 +114,5 @@ def process_data(config: DictConfig):
         "preprocessed_data",
         to_absolute_path(data_config.intermediate.dir),
     )
+
+    wandb.config.update({"num_cols": len(code_config.columns.keep)})

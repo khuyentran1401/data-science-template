@@ -1,4 +1,4 @@
 defaults:
   - data_catalog: data_catalog
-  - process: process
+  - process: process_2
   - segment: segment
