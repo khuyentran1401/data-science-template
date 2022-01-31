@@ -169,6 +169,7 @@ def segment(config: DictConfig) -> None:
         )
 
     flow.run()
+    # flow.visualize()
     log_data(
         data_config.segmented.name,
         "preprocessed_data",

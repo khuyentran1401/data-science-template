@@ -1,26 +1,20 @@
 columns:
-  drop:
-    - ID 
-    - Year_Birth
-    - Dt_Customer
-    - Marital_Status
-    - Z_CostContact
-    - Z_Revenue
-    - Kidhome
-    - Teenhome
-    - total_children
-    # TODO: Add these features later
-    - Education
-    - NumWebPurchases
-    - NumCatalogPurchases
-    - NumStorePurchases
-    - NumDealsPurchases
-    - MntWines
-    - MntFruits
-    - MntMeatProducts
-    - MntFishProducts
-    - MntSweetProducts
-    - MntGoldProds 
+  keep:
+    - Income
+    - Recency
+    - NumWebVisitsMonth
+    - AcceptedCmp3
+    - AcceptedCmp4
+    - AcceptedCmp5
+    - AcceptedCmp1
+    - AcceptedCmp2
+    - Complain
+    - Response
+    - age
+    - total_purchases
+    - enrollment_years
+    - family_size
+
   remove_outliers_threshold:
     age: 90
     Income: 600000

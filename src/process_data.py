@@ -59,19 +59,20 @@ def get_new_features(df: pd.DataFrame, size_map: dict) -> pd.DataFrame:
     )
 
 
-def drop_features(df: pd.DataFrame, drop_columns: list):
-    return df.drop(drop_columns, axis=1).reset_index(drop=True)
+def drop_features(df: pd.DataFrame, keep_columns: list):
+    df = df[keep_columns]
+    return df
 
 
 def drop_outliers(df: pd.DataFrame, column_threshold: dict):
     for col, threshold in column_threshold.items():
         df = df[df[col] < threshold]
-    return df
+    return df.reset_index(drop=True)
 
 
 @task
 def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
-    return df.pipe(drop_features, drop_columns=columns["drop"]).pipe(
+    return df.pipe(drop_features, keep_columns=columns["keep"]).pipe(
         drop_outliers, column_threshold=columns["remove_outliers_threshold"]
     )
 
@@ -104,6 +105,7 @@ def process_data(config: DictConfig):
         df = scale_features(df)
 
     flow.run()
+    # flow.visualize()
     log_data(
         data_config.intermediate.name,
         "preprocessed_data",
