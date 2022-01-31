@@ -55,9 +55,9 @@ def create_3d_plot(projection: dict, image_path: str) -> None:
 
 @task
 def get_best_k_cluster(
-    pca_df: pd.DataFrame, k: int, image_path: str
+    pca_df: pd.DataFrame, k: int, metric: str, image_path: str
 ) -> pd.DataFrame:
-    elbow = KElbowVisualizer(KMeans(), k=k)
+    elbow = KElbowVisualizer(KMeans(), k=k, metric=metric)
     elbow.fit(pca_df)
     elbow.fig.savefig(image_path)
 
@@ -154,6 +154,7 @@ def segment(config: DictConfig) -> None:
         k_best = get_best_k_cluster(
             pca_df,
             code_config.kmeans.k,
+            code_config.kmeans.metric,
             to_absolute_path(code_config.image.kmeans),
         )
 

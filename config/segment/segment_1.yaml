@@ -1,4 +1,4 @@
-project_name: customer_segmentation
+name: segment_1
 
 pca:
   n_components: 3
@@ -9,6 +9,7 @@ pca:
 
 kmeans:
   k: 10
+  metric: distortion
 
 image:
   pca: image/3d_plot.png
