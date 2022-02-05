@@ -1,2 +1,2 @@
-- [ ] Try different combination of features
+- [x] Try different combination of features
 - [ ] Try different clustering algorithms

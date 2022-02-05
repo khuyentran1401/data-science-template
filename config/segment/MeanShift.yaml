@@ -1,5 +1,3 @@
-name: segment_1
-
 pca:
   n_components: 3
   columns:
@@ -7,9 +5,10 @@ pca:
   - col2
   - col3
 
-kmeans:
+cluster:
   k: 10
   metric: distortion
+  algorithm: MeanShift
 
 image:
   pca: image/3d_plot.png

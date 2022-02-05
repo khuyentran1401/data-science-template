@@ -108,7 +108,7 @@ def process_data(config: DictConfig):
         df = scale_features(df)
 
     flow.run()
-    # flow.visualize()
+    flow.visualize()
     log_data(
         data_config.intermediate.name,
         "preprocessed_data",

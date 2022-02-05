@@ -1,0 +1,31 @@
+name: process_3
+columns:
+  keep:
+    - Income
+    - Recency
+    - NumWebVisitsMonth
+    - NumDealsPurchases
+    - NumWebPurchases
+    - NumCatalogPurchases
+    - NumStorePurchases
+    - Complain
+    - Response
+    - age
+    - enrollment_years
+    - family_size
+
+  remove_outliers_threshold:
+    age: 90
+    Income: 600000
+
+encode:
+  family_size:
+    Married: 2
+    Together: 2
+    Absurd: 1
+    Widow: 1
+    YOLO: 1
+    Divorced: 1
+    Single: 1
+    Alone: 1
+

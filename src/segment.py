@@ -8,7 +8,9 @@ from omegaconf import DictConfig
 from prefect import Flow, task
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
-from sklearn.cluster import AgglomerativeClustering, KMeans
+from sklearn.cluster import (DBSCAN, OPTICS, AffinityPropagation,
+                             AgglomerativeClustering, Birch, KMeans, MeanShift,
+                             SpectralClustering)
 from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
 
@@ -55,9 +57,12 @@ def create_3d_plot(projection: dict, image_path: str) -> None:
 
 @task
 def get_best_k_cluster(
-    pca_df: pd.DataFrame, k: int, metric: str, image_path: str
+    pca_df: pd.DataFrame, cluster_config, image_path: str
 ) -> pd.DataFrame:
-    elbow = KElbowVisualizer(KMeans(), k=k, metric=metric)
+    model = eval(cluster_config.algorithm)()
+    elbow = KElbowVisualizer(
+        model, k=cluster_config.k, metric=cluster_config.metric
+    )
     elbow.fit(pca_df)
     elbow.fig.savefig(image_path)
 
@@ -76,9 +81,9 @@ def get_best_k_cluster(
 
 @task()
 def get_clusters(
-    pca_df: pd.DataFrame, k: int
+    pca_df: pd.DataFrame, algorithm: str, k: int
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    model = AgglomerativeClustering(n_clusters=k)
+    model = eval(algorithm)(n_clusters=k)
 
     # Fit model and predict clusters
     return model.fit_predict(pca_df)
@@ -153,12 +158,11 @@ def segment(config: DictConfig) -> None:
 
         k_best = get_best_k_cluster(
             pca_df,
-            code_config.kmeans.k,
-            code_config.kmeans.metric,
+            code_config.cluster,
             to_absolute_path(code_config.image.kmeans),
         )
 
-        preds = get_clusters(pca_df, k_best)
+        preds = get_clusters(pca_df, code_config.cluster.algorithm, k_best)
 
         data = insert_clusters_to_df(data, preds)
 
@@ -170,7 +174,7 @@ def segment(config: DictConfig) -> None:
         )
 
     flow.run()
-    # flow.visualize()
+    flow.visualize()
     log_data(
         data_config.segmented.name,
         "preprocessed_data",
