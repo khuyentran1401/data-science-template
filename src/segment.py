@@ -16,8 +16,6 @@ from yellowbrick.cluster import KElbowVisualizer
 
 import wandb
 from helper import log_data
-from loguru import logger
-from rich import inspect 
 
 OUTPUT_DIR = "data/final/"
 OUTPUT_FILE = "segmented.csv"
