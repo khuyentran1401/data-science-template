@@ -6,7 +6,6 @@ pca:
   - col3
 
 cluster:
-  k: 10
   metric: distortion
   algorithm: AgglomerativeClustering
 
