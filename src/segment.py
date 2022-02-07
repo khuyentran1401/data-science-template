@@ -16,6 +16,8 @@ from yellowbrick.cluster import KElbowVisualizer
 
 import wandb
 from helper import log_data
+from loguru import logger
+from rich import inspect 
 
 OUTPUT_DIR = "data/final/"
 OUTPUT_FILE = "segmented.csv"
@@ -59,10 +61,15 @@ def create_3d_plot(projection: dict, image_path: str) -> None:
 def get_best_k_cluster(
     pca_df: pd.DataFrame, cluster_config, image_path: str
 ) -> pd.DataFrame:
+
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111)
+
     model = eval(cluster_config.algorithm)()
     elbow = KElbowVisualizer(
-        model, k=cluster_config.k, metric=cluster_config.metric
+        model, metric=cluster_config.metric
     )
+
     elbow.fit(pca_df)
     elbow.fig.savefig(image_path)
 
@@ -174,7 +181,7 @@ def segment(config: DictConfig) -> None:
         )
 
     flow.run()
-    flow.visualize()
+    # flow.visualize()
     log_data(
         data_config.segmented.name,
         "preprocessed_data",
