@@ -1,0 +1,11 @@
+stages:
+  process_data:
+    cmd: python src/main.py pipeline=process_data
+    deps: 
+      - src/main.py
+      - src/process_data.py
+      - config/data_catalog/data_catalog.yaml
+      - config/process
+    outs:
+      - data/raw/marketing_campaign.csv
+      - data/intermediate/processed.csv
