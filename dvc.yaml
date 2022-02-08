@@ -6,6 +6,16 @@ stages:
       - src/process_data.py
       - config/data_catalog/data_catalog.yaml
       - config/process
-    outs:
       - data/raw/marketing_campaign.csv
+    outs: 
       - data/intermediate/processed.csv
+  segment:
+    cmd: python src/main.py pipeline=segment
+    deps:
+      - src/main.py
+      - src/segment.py
+      - config/data_catalog/data_catalog.yaml
+      - config/segment
+      - data/intermediate/processed.csv
+    outs:
+      - data/final/segment.csv 
