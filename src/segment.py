@@ -15,13 +15,13 @@ from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
 
 import wandb
-from helper import log_data
+from helper import log_data, artifact_task
 
 OUTPUT_DIR = "data/final/"
 OUTPUT_FILE = "segmented.csv"
 
 
-@task
+@artifact_task
 def reduce_dimension(
     df: pd.DataFrame, n_components: int, columns: list
 ) -> pd.DataFrame:
@@ -84,7 +84,7 @@ def get_best_k_cluster(
     return k_best
 
 
-@task()
+@task
 def get_clusters(
     pca_df: pd.DataFrame, algorithm: str, k: int
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
@@ -94,7 +94,7 @@ def get_clusters(
     return model.fit_predict(pca_df)
 
 
-@task(
+@artifact_task(
     result=LocalResult(
         OUTPUT_DIR,
         location=OUTPUT_FILE,
@@ -179,7 +179,8 @@ def segment(config: DictConfig) -> None:
         )
 
     flow.run()
-    # flow.visualize()
+    flow.register(project_name="customer_segmentation")
+    
     log_data(
         data_config.segmented.name,
         "preprocessed_data",

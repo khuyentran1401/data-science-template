@@ -7,11 +7,11 @@ from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.preprocessing import StandardScaler
 
-from helper import log_data
+from helper import log_data, artifact_task
 from wandb import wandb
 
 
-@task
+@artifact_task
 def load_data(data_name: str, load_kwargs: DictConfig) -> pd.DataFrame:
     data = pd.read_csv(data_name, **load_kwargs)
 
@@ -20,45 +20,33 @@ def load_data(data_name: str, load_kwargs: DictConfig) -> pd.DataFrame:
     return data
 
 
-@task
+@artifact_task
 def drop_na(df: pd.DataFrame) -> pd.DataFrame:
     return df.dropna()
 
-
+@artifact_task
 def get_age(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(age=df["Year_Birth"].apply(lambda row: 2021 - row))
 
-
+@artifact_task
 def get_total_children(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(total_children=df["Kidhome"] + df["Teenhome"])
 
-
+@artifact_task
 def get_total_purchases(df: pd.DataFrame) -> pd.DataFrame:
     purchases_columns = df.filter(like="Purchases", axis=1).columns
     return df.assign(total_purchases=df[purchases_columns].sum(axis=1))
 
-
+@artifact_task
 def get_enrollment_years(df: pd.DataFrame) -> pd.DataFrame:
     df["Dt_Customer"] = pd.to_datetime(df["Dt_Customer"])
     return df.assign(enrollment_years=2022 - df["Dt_Customer"].dt.year)
 
-
+@artifact_task
 def get_family_size(df: pd.DataFrame, size_map: dict) -> pd.DataFrame:
     return df.assign(
         family_size=df["Marital_Status"].map(size_map) + df["total_children"]
     )
-
-
-@task
-def get_new_features(df: pd.DataFrame, size_map: dict) -> pd.DataFrame:
-    return (
-        df.pipe(get_age)
-        .pipe(get_total_children)
-        .pipe(get_total_purchases)
-        .pipe(get_enrollment_years)
-        .pipe(get_family_size, size_map=size_map)
-    )
-
 
 def drop_features(df: pd.DataFrame, keep_columns: list):
     df = df[keep_columns]
@@ -71,7 +59,7 @@ def drop_outliers(df: pd.DataFrame, column_threshold: dict):
     return df.reset_index(drop=True)
 
 
-@task
+@artifact_task
 def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
     df = df.pipe(drop_features, keep_columns=columns["keep"]).pipe(
         drop_outliers, column_threshold=columns["remove_outliers_threshold"]
@@ -103,12 +91,17 @@ def process_data(config: DictConfig):
             data_config.raw_data.load_kwargs,
         )
         df = drop_na(df)
-        df = get_new_features(df, code_config.encode.family_size)
+        df = get_age(df)
+        df = get_total_children(df)
+        df = get_total_purchases(df)
+        df = get_enrollment_years(df)
+        df = get_family_size(df, code_config.encode.family_size)
         df = drop_columns_and_rows(df, code_config.columns)
         df = scale_features(df)
 
     flow.run()
-    flow.visualize()
+    flow.register(project_name="customer_segmentation")
+    
     log_data(
         data_config.intermediate.name,
         "preprocessed_data",
