@@ -3,6 +3,7 @@ stages:
     cmd: python src/main.py pipeline=process_data
     deps: 
       - src/main.py
+      - src/helper.py
       - src/process_data.py
       - config/data_catalog/data_catalog.yaml
       - config/process
@@ -13,6 +14,7 @@ stages:
     cmd: python src/main.py pipeline=segment
     deps:
       - src/main.py
+      - src/helper.py
       - src/segment.py
       - config/data_catalog/data_catalog.yaml
       - config/segment
