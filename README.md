@@ -48,7 +48,7 @@ python src/main.py flow=segment
 To serve the trained model, run:
 ```bash
 cd src
-bentoml serve predict_app.py:service --reload
+bentoml serve bentoml_app.py:service --reload
 ```
 
 

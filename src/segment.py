@@ -25,13 +25,17 @@ TASK_OUTPUT = LocalResult(
     serializer=PandasSerializer("csv", serialize_kwargs={"index": False}),
 )
 
-
-@artifact_task(result=TASK_OUTPUT)
-def reduce_dimension(
-    df: pd.DataFrame, n_components: int, columns: list
-) -> pd.DataFrame:
+@task(result=LocalResult('model', location='PCA.pkl'))
+def get_pca_model(data: pd.DataFrame, n_components: int) -> PCA:
     pca = PCA(n_components=n_components)
-    return pd.DataFrame(pca.fit_transform(df), columns=columns)
+    pca.fit(data)
+    return pca
+
+@task(result=TASK_OUTPUT)
+def reduce_dimension(
+    df: pd.DataFrame, pca: PCA, columns: list
+) -> pd.DataFrame:
+    return pd.DataFrame(pca.transform(df), columns=columns)
 
 
 @task
@@ -155,8 +159,10 @@ def segment(config: DictConfig) -> None:
             index_col=0,
         )
 
+        pca = get_pca_model(data, code_config.pca.n_components)
+
         pca_df = reduce_dimension(
-            data, code_config.pca.n_components, code_config.pca.columns
+            data, pca, code_config.pca.columns
         )
 
         projections = get_3d_projection(pca_df)
