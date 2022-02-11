@@ -12,8 +12,8 @@ from wandb import wandb
 
 
 @artifact_task
-def load_data(data_name: str, load_kwargs: DictConfig) -> pd.DataFrame:
-    data = pd.read_csv(data_name, **load_kwargs)
+def load_data(data_name: str) -> pd.DataFrame:
+    data = pd.read_csv(data_name)
 
     log_data(data_name, "raw_data")
 
@@ -88,7 +88,6 @@ def process_data(config: DictConfig):
     ) as flow:
         df = load_data(
             to_absolute_path(data_config.raw_data.path),
-            data_config.raw_data.load_kwargs,
         )
         df = drop_na(df)
         df = get_age(df)

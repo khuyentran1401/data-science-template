@@ -4,6 +4,7 @@
 __pycache__
 outputs
 data
+model
 .DS_Store
 .ipynb_checkpoints
 customer-segmentation-a-AULLE--py3.8
@@ -12,3 +13,4 @@ customer-segmentation-a-AULLE--py3.8
 image
 wandb
 multirun
+/model
