@@ -8,20 +8,25 @@ from omegaconf import DictConfig
 from prefect import Flow, task
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
-from sklearn.cluster import (DBSCAN, OPTICS, AffinityPropagation,
-                             AgglomerativeClustering, Birch, KMeans, MeanShift,
-                             SpectralClustering)
+from sklearn.cluster import AgglomerativeClustering, KMeans, SpectralClustering
 from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
 
 import wandb
 from helper import log_data, artifact_task
+import bentoml
+import bentoml.sklearn
 
 OUTPUT_DIR = "data/final/"
-OUTPUT_FILE = "segmented.csv"
+OUTPUT_FILE = "{task_name}.csv"
+TASK_OUTPUT = LocalResult(
+    OUTPUT_DIR,
+    location=OUTPUT_FILE,
+    serializer=PandasSerializer("csv", serialize_kwargs={"index": False}),
+)
 
 
-@artifact_task
+@artifact_task(result=TASK_OUTPUT)
 def reduce_dimension(
     df: pd.DataFrame, n_components: int, columns: list
 ) -> pd.DataFrame:
@@ -64,9 +69,7 @@ def get_best_k_cluster(
     ax = fig.add_subplot(111)
 
     model = eval(cluster_config.algorithm)()
-    elbow = KElbowVisualizer(
-        model, metric=cluster_config.metric
-    )
+    elbow = KElbowVisualizer(model, metric=cluster_config.metric)
 
     elbow.fit(pca_df)
     elbow.fig.savefig(image_path)
@@ -85,22 +88,26 @@ def get_best_k_cluster(
 
 
 @task
-def get_clusters(
+def get_clusters_model(
     pca_df: pd.DataFrame, algorithm: str, k: int
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     model = eval(algorithm)(n_clusters=k)
 
-    # Fit model and predict clusters
-    return model.fit_predict(pca_df)
+    # Fit model
+    return model.fit(pca_df)
 
 
-@artifact_task(
-    result=LocalResult(
-        OUTPUT_DIR,
-        location=OUTPUT_FILE,
-        serializer=PandasSerializer("csv"),
-    ),
-)
+@task
+def save_model(model, name: str):
+    bentoml.sklearn.save(name, model)
+
+
+@task
+def predict(model, pca_df: pd.DataFrame):
+    return model.predict(pca_df)
+
+
+@artifact_task(result=TASK_OUTPUT)
 def insert_clusters_to_df(
     df: pd.DataFrame, clusters: np.ndarray
 ) -> pd.DataFrame:
@@ -135,22 +142,17 @@ def plot_clusters(
 def segment(config: DictConfig) -> None:
 
     data_config = config.data_catalog
-    code_config = config.segment
+    code_config = config
 
     with Flow(
         "segmentation",
     ) as flow:
 
-        data = (
-            LocalResult(
-                dir=to_absolute_path(data_config.intermediate.dir),
-                serializer=PandasSerializer(
-                    "csv",
-                    deserialize_kwargs=data_config.intermediate.deserialize_kwargs,
-                ),
-            )
-            .read(location=data_config.intermediate.name)
-            .value
+        data = pd.read_csv(
+            to_absolute_path(
+                f"{data_config.intermediate.dir}/{data_config.intermediate.name}"
+            ),
+            index_col=0,
         )
 
         pca_df = reduce_dimension(
@@ -163,11 +165,16 @@ def segment(config: DictConfig) -> None:
 
         k_best = get_best_k_cluster(
             pca_df,
-            code_config.cluster,
+            code_config.segment,
             to_absolute_path(code_config.image.kmeans),
         )
 
-        preds = get_clusters(pca_df, code_config.cluster.algorithm, k_best)
+        model = get_clusters_model(
+            pca_df, code_config.segment.algorithm, k_best
+        )
+        save_model(model, code_config.model_name)
+
+        preds = predict(model, pca_df)
 
         data = insert_clusters_to_df(data, preds)
 
@@ -180,7 +187,7 @@ def segment(config: DictConfig) -> None:
 
     flow.run()
     flow.register(project_name="customer_segmentation")
-    
+
     log_data(
         data_config.segmented.name,
         "preprocessed_data",
