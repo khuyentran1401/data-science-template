@@ -1,15 +1,2 @@
-pca:
-  n_components: 3
-  columns:
-  - col1
-  - col2
-  - col3
-
-cluster:
-  metric: distortion
-  algorithm: AgglomerativeClustering
-
-image:
-  pca: image/3d_plot.png
-  kmeans: image/elbow.png
-  clusters: image/cluster.png
+metric: distortion
+algorithm: AgglomerativeClustering

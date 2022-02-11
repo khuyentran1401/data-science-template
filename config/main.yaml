@@ -3,4 +3,18 @@ defaults:
   - process: process_4
   - segment: KMeans
 
-pipeline: all
+flow: all
+
+pca:
+  n_components: 3
+  columns:
+  - col1
+  - col2
+  - col3
+
+image:
+  pca: image/3d_plot.png
+  kmeans: image/elbow.png
+  clusters: image/cluster.png
+
+model_name: customer_segmentation_${segment.algorithm}
