@@ -1,3 +1,5 @@
+import bentoml
+import bentoml.sklearn
 import pandas as pd
 from feature_engine.wrappers import SklearnTransformerWrapper
 from hydra.utils import to_absolute_path
@@ -84,6 +86,7 @@ def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
 def get_scaler(df: pd.DataFrame):
     scaler = SklearnTransformerWrapper(transformer=StandardScaler())
     scaler.fit(df)
+
     return scaler
 
 

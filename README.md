@@ -1,7 +1,5 @@
 # End-to-end Customer Segmentation Project
 
-_Note: This project is in progress._
-
 ## Tools Used in This Project
 * [Prefect](https://www.prefect.io/): Orchestrate workflows
 * [hydra](https://hydra.cc/): Manage configuration files
@@ -47,16 +45,22 @@ python src/main.py flow=segment
 
 To serve the trained model, run:
 ```bash
-cd src
-bentoml serve bentoml_app.py:service --reload
+bentoml serve src/bentoml_app.py:service --reload
 ```
 To send requests to the newly started service in Python, run:
+```bash
+python src/predict.py
+```
+
+Details of `predict.py`:
 ```python
 import requests
+
 prediction = requests.post(
     "http://127.0.0.1:5000/predict",
     headers={"content-type": "application/json"},
-    data='{"Income": 58138, "Recency": 58,"MntWines": 635,"MntFruits": 88,"MntMeatProducts": 546,"MntFishProducts": 172,"MntSweetProducts": 88,"MntGoldProds": 88,"Complain": 0,"Response": 1,"age": 64,"enrollment_years": 64,"family_size": 1}').text
+    data='{"Income": 58138, "Recency": 58,"MntWines": 635,"MntFruits": 88,"MntMeatProducts": 546,"MntFishProducts": 172,"MntSweetProducts": 88,"MntGoldProds": 88,"Complain": 0,"Response": 1,"age": 64,"enrollment_years": 10,"family_size": 1}',
+).text
 
 print(prediction)
 ```
