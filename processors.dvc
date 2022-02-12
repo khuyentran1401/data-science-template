@@ -2,4 +2,4 @@ outs:
 - md5: 07370354f117bc79d8f1dfb68dbb8d41.dir
   size: 2681
   nfiles: 2
-  path: model
+  path: processors
