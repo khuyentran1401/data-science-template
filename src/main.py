@@ -1,7 +1,7 @@
 import hydra
+import wandb
 from omegaconf import DictConfig, OmegaConf
 
-import wandb
 from process_data import process_data
 from segment import segment
 
@@ -10,20 +10,20 @@ from segment import segment
 def main(config: DictConfig):
 
     wandb.init(
-            project="customer_segmentation", config=OmegaConf.to_object(config)
-        )
+        project="customer_segmentation", config=OmegaConf.to_object(config)
+    )
 
-    if config.flow == 'all':
+    if config.flow == "all":
         process_data(config)
         segment(config)
-    
-    elif config.flow == 'process_data':
+
+    elif config.flow == "process_data":
         process_data(config)
-    
-    elif config.flow == 'segment':
+
+    elif config.flow == "segment":
         segment(config)
 
-    else: 
+    else:
         print("flow not found")
 
 

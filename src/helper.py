@@ -1,13 +1,15 @@
 import os
+from functools import partial, wraps
+
+import pandas as pd
 import wandb
 from prefect import task
-from functools import wraps, partial
 from prefect.backend.artifacts import create_markdown_artifact
-import pandas as pd  
+
 
 def artifact_task(func=None, **task_init_kwargs):
-  
-    if func is None: 
+
+    if func is None:
         return partial(artifact_task, **task_init_kwargs)
 
     @wraps(func)
@@ -16,8 +18,9 @@ def artifact_task(func=None, **task_init_kwargs):
         if isinstance(res, pd.DataFrame):
             create_markdown_artifact(res.head(10).to_markdown())
         return res
-    
+
     return task(safe_func, **task_init_kwargs)
+
 
 def log_data(data_name: str, type: str, dir: str = None) -> None:
     if dir is None:
