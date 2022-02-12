@@ -1,8 +1,11 @@
 from typing import Tuple
 
+import bentoml
+import bentoml.sklearn
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import wandb
 from hydra.utils import to_absolute_path
 from omegaconf import DictConfig
 from prefect import Flow, task
@@ -12,26 +15,25 @@ from sklearn.cluster import AgglomerativeClustering, KMeans, SpectralClustering
 from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
 
-import wandb
-from helper import log_data, artifact_task
-import bentoml
-import bentoml.sklearn
+from helper import artifact_task, log_data
 
 OUTPUT_DIR = "data/final/"
 OUTPUT_FILE = "{task_name}.csv"
-TASK_OUTPUT = LocalResult(
+DATA_OUTPUT = LocalResult(
     OUTPUT_DIR,
     location=OUTPUT_FILE,
     serializer=PandasSerializer("csv", serialize_kwargs={"index": False}),
 )
 
-@task(result=LocalResult('model', location='PCA.pkl'))
+
+@task(result=LocalResult("model", location="PCA.pkl"))
 def get_pca_model(data: pd.DataFrame, n_components: int) -> PCA:
     pca = PCA(n_components=n_components)
     pca.fit(data)
     return pca
 
-@task(result=TASK_OUTPUT)
+
+@artifact_task(result=DATA_OUTPUT)
 def reduce_dimension(
     df: pd.DataFrame, pca: PCA, columns: list
 ) -> pd.DataFrame:
@@ -70,7 +72,7 @@ def get_best_k_cluster(
 ) -> pd.DataFrame:
 
     fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(111)
+    fig.add_subplot(111)
 
     model = eval(cluster_config.algorithm)()
     elbow = KElbowVisualizer(model, metric=cluster_config.metric)
@@ -111,7 +113,7 @@ def predict(model, pca_df: pd.DataFrame):
     return model.predict(pca_df)
 
 
-@artifact_task(result=TASK_OUTPUT)
+@artifact_task(result=DATA_OUTPUT)
 def insert_clusters_to_df(
     df: pd.DataFrame, clusters: np.ndarray
 ) -> pd.DataFrame:
@@ -161,9 +163,7 @@ def segment(config: DictConfig) -> None:
 
         pca = get_pca_model(data, code_config.pca.n_components)
 
-        pca_df = reduce_dimension(
-            data, pca, code_config.pca.columns
-        )
+        pca_df = reduce_dimension(data, pca, code_config.pca.columns)
 
         projections = get_3d_projection(pca_df)
 

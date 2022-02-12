@@ -1,14 +1,9 @@
-import bentoml
-import pandas as pd
-import pickle 
+import requests
 
-df = pd.read_csv("data/test/sample1.csv")
-pca = pickle.load(open("model/PCA.pkl", "rb"))
-processed = pd.DataFrame(pca.transform(df), columns=['col1', 'col2', 'col3'])
+prediction = requests.post(
+    "http://127.0.0.1:5000/predict",
+    headers={"content-type": "application/json"},
+    data='{"Income": 58138, "Recency": 58,"MntWines": 635,"MntFruits": 88,"MntMeatProducts": 546,"MntFishProducts": 172,"MntSweetProducts": 88,"MntGoldProds": 88,"Complain": 0,"Response": 1,"age": 64,"enrollment_years": 64,"family_size": 1}',
+).text
 
-service_name = "customer_segmentation_kmeans"
-model_version = f"{service_name}:latest"
-
-classifier = bentoml.sklearn.load_runner(model_version)
-out = classifier.run(processed)
-print(out)
+print(prediction)
