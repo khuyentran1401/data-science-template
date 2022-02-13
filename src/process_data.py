@@ -8,9 +8,9 @@ from prefect import Flow, task
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.preprocessing import StandardScaler
-from wandb import wandb
 
 from helper import artifact_task, log_data
+from wandb import wandb
 
 
 @artifact_task
@@ -82,7 +82,7 @@ def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
     return df
 
 
-@task(result=LocalResult("model", location="scaler.pkl"))
+@task(result=LocalResult("processors", location="scaler.pkl"))
 def get_scaler(df: pd.DataFrame):
     scaler = SklearnTransformerWrapper(transformer=StandardScaler())
     scaler.fit(df)
@@ -92,7 +92,7 @@ def get_scaler(df: pd.DataFrame):
 
 @artifact_task
 def scale_features(df: pd.DataFrame, scaler: SklearnTransformerWrapper):
-    return scaler.fit_transform(df)
+    return scaler.transform(df)
 
 
 def process_data(config: DictConfig):

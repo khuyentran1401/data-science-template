@@ -17,18 +17,13 @@ service = bentoml.Service(service_name, runners=[classifier])
 
 class Customer(BaseModel):
 
-    Income: int = 58138
+    Income: float = 58138
     Recency: int = 58
-    MntWines: int = 635
-    MntFruits: int = 88
-    MntMeatProducts: int = 546
-    MntFishProducts: int = 172
-    MntSweetProducts: int = 88
-    MntGoldProds: int = 88
+    NumWebVisitsMonth: int = 7
     Complain: int = 0
-    Response: int = 1
     age: int = 64
-    enrollment_years: int = 64
+    total_purchases: int = 25
+    enrollment_years: int = 10
     family_size: int = 1
 
 
@@ -36,9 +31,12 @@ class Customer(BaseModel):
 def predict(customer: JSON(pydantic_model=Customer)) -> np.ndarray:
 
     df = pd.DataFrame(customer.dict(), index=[0])
-    print(os.getcwd())
+
     # Process data
     scaler = pickle.load(open("processors/scaler.pkl", "rb"))
+    print(df.shape[1])
+    print(scaler.n_features_in_)
+
     scaled_df = scaler.transform(df)
 
     pca = pickle.load(open("processors/PCA.pkl", "rb"))

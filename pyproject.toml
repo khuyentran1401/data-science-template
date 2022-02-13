@@ -20,6 +20,7 @@ wandb = "^0.12.9"
 bentoml = "1.0.0a3"
 prefect = "^0.15.13"
 pydantic = "^1.9.0"
+streamlit = "^1.5.1"
 
 [tool.poetry.dev-dependencies]
 nb-black = "^1.0.7"

@@ -1,6 +1,6 @@
 defaults:
   - data_catalog: data_catalog
-  - process: process_4
+  - process: process_2
   - segment: KMeans
 
 flow: all

@@ -1,5 +1,7 @@
 # End-to-end Customer Segmentation Project
 
+## Dataset
+The data is downloaded from [Kaggle](https://www.kaggle.com/imakash3011/customer-personality-analysis).
 ## Tools Used in This Project
 * [Prefect](https://www.prefect.io/): Orchestrate workflows
 * [hydra](https://hydra.cc/): Manage configuration files

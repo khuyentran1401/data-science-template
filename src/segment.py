@@ -5,7 +5,6 @@ import bentoml.sklearn
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import wandb
 from hydra.utils import to_absolute_path
 from omegaconf import DictConfig
 from prefect import Flow, task
@@ -15,6 +14,7 @@ from sklearn.cluster import AgglomerativeClustering, KMeans, SpectralClustering
 from sklearn.decomposition import PCA
 from yellowbrick.cluster import KElbowVisualizer
 
+import wandb
 from helper import artifact_task, log_data
 
 OUTPUT_DIR = "data/final/"
@@ -26,7 +26,7 @@ DATA_OUTPUT = LocalResult(
 )
 
 
-@task(result=LocalResult("model", location="PCA.pkl"))
+@task(result=LocalResult("processors", location="PCA.pkl"))
 def get_pca_model(data: pd.DataFrame, n_components: int) -> PCA:
     pca = PCA(n_components=n_components)
     pca.fit(data)
