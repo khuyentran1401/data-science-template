@@ -1,6 +1,7 @@
 service: "src/bentoml_app.py:service"
 include:
  - "src/bentoml_app.py"
+ - "src/streamlit_app.py"
  - "processors/*"
 python:
   packages:
@@ -9,3 +10,4 @@ python:
   - scikit-learn==1.0.2
   - pydantic==1.9.0
   - feature-engine==1.2.0
+  - streamlit==1.5.1
