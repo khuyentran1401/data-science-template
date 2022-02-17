@@ -1,9 +1,27 @@
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+    
 defaults:
-  - data_catalog: data_catalog
   - process: process_2
-  - segment: KMeans
 
 flow: all
+
+raw_data: 
+  path: data/raw/marketing_campaign.csv
+
+intermediate:
+  dir: data/intermediate
+  name: scale_features.csv
+  path: ${intermediate.dir}/${intermediate.name}
+
+segmented:
+  dir: data/final
+  name: segmented.csv
+  path: ${segmented.dir}/${segmented.name}
+  deserialize_kwargs:
+    index: false
 
 pca:
   n_components: 3
@@ -13,8 +31,5 @@ pca:
   - col3
 
 image:
-  pca: image/3d_plot.png
   kmeans: image/elbow.png
   clusters: image/cluster.png
-
-model_name: customer_segmentation_${segment.algorithm}
