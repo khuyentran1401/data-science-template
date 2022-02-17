@@ -16,7 +16,7 @@ def main(config: DictConfig):
         project="customer_segmentation",
         config=OmegaConf.to_object(config),
         reinit=True,
-        mode="disabled",
+        # mode="disabled",
     )
 
     if config.flow == "all":

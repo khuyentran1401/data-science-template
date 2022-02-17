@@ -6,8 +6,6 @@ hydra:
 defaults:
   - process: process_2
 
-flow: all
-
 raw_data: 
   path: data/raw/marketing_campaign.csv
 
@@ -22,6 +20,8 @@ segmented:
   path: ${segmented.dir}/${segmented.name}
   deserialize_kwargs:
     index: false
+
+flow: all 
 
 pca:
   n_components: 3

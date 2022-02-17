@@ -1,12 +1,15 @@
+from datetime import timedelta
+
+import hydra
 import pandas as pd
 from omegaconf import DictConfig
-from prefect import Flow, task
+from prefect import Flow, Parameter, task
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.preprocessing import StandardScaler
 
+import wandb
 from helper import artifact_task
-from wandb import wandb
 
 INTERMEDIATE_OUTPUT = LocalResult(
     "data/intermediate/",
@@ -67,9 +70,11 @@ def drop_outliers(df: pd.DataFrame, column_threshold: dict):
 
 
 @artifact_task(result=INTERMEDIATE_OUTPUT)
-def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig):
-    df = df.pipe(drop_features, keep_columns=columns["keep"]).pipe(
-        drop_outliers, column_threshold=columns["remove_outliers_threshold"]
+def drop_columns_and_rows(
+    df: pd.DataFrame, columns: DictConfig
+) -> pd.DataFrame:
+    df = df.pipe(drop_features, keep_columns=columns.keep).pipe(
+        drop_outliers, column_threshold=columns.remove_outliers_threshold
     )
 
     return df
@@ -88,6 +93,10 @@ def scale_features(df: pd.DataFrame, scaler: StandardScaler):
     return pd.DataFrame(scaler.transform(df), columns=df.columns)
 
 
+@hydra.main(
+    config_path="../config",
+    config_name="main",
+)
 def process_data(config: DictConfig):
 
     with Flow("process_data") as flow:
@@ -106,3 +115,7 @@ def process_data(config: DictConfig):
     # flow.register(project_name="customer_segmentation")
 
     wandb.config.update({"num_cols": len(config.process.columns.keep)})
+
+
+if __name__ == "__main__":
+    process_data()

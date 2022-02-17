@@ -13,6 +13,7 @@ The data is downloaded from [Kaggle](https://www.kaggle.com/imakash3011/customer
 ## Project Structure
 * `src`: consists of Python scripts
 * `config`: consists of configuration files
+* `data`: consists of data
 * `notebook`: consists of Jupyter Notebooks
 * `tests`: consists of test files
 
@@ -21,6 +22,7 @@ The data is downloaded from [Kaggle](https://www.kaggle.com/imakash3011/customer
 2. Set up the environment:
 ```bash
 make setup
+source activate_env.sh
 ```
 3. To persist the output of Prefect's flow, run 
 ```bash
@@ -43,31 +45,5 @@ To run the `segment` flow, type:
 python src/main.py flow=segment
 ```
 
-## Serve Machine Learning Models with BentoML
 
-To serve the trained model, run:
-```bash
-bentoml serve src/bentoml_app.py:service --reload
-```
-To send requests to the newly started service in Python, run:
-```bash
-python src/predict.py
-```
-
-Details of `predict.py`:
-```python
-import requests
-
-prediction = requests.post(
-    "http://127.0.0.1:5000/predict",
-    headers={"content-type": "application/json"},
-    data='{"Income": 58138, "Recency": 58, "Complain": 0,"age": 64,"total_purchases": 25,"enrollment_years": 10,"family_size": 1}',
-).text
-
-print(prediction)
-```
-Output:
-```bash
-1
-```
 

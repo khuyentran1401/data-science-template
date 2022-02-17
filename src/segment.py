@@ -3,13 +3,13 @@ from typing import Tuple
 
 import bentoml
 import bentoml.sklearn
+import hydra
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import prefect
-from omegaconf import DictConfig
+from omegaconf import DictConfig, OmegaConf
 from prefect import Flow, task
-from prefect.engine import cache_validators
+from prefect.backend.artifacts import create_markdown_artifact
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.cluster import KMeans
@@ -25,19 +25,17 @@ FINAL_OUTPUT = LocalResult(
     serializer=PandasSerializer("csv", serialize_kwargs={"index": False}),
 )
 
-# ! ERROR: Can't use cache because it is now invalid
-@task(
-    result=LocalResult("processors", location="PCA.pkl"),
-    cache_for=timedelta(days=1),
-)
+
+@task(result=LocalResult("processors", location="PCA.pkl"))
 def get_pca_model(data: pd.DataFrame) -> PCA:
+    create_markdown_artifact(data.columns)
+
     pca = PCA(n_components=3)
     pca.fit(data)
     return pca
 
 
-# ! ERROR: Can't use cache because it is now invalid
-@artifact_task(result=FINAL_OUTPUT, cache_for=timedelta(days=1))
+@artifact_task(result=FINAL_OUTPUT)
 def reduce_dimension(df: pd.DataFrame, pca: PCA) -> pd.DataFrame:
     return pd.DataFrame(pca.transform(df), columns=["col1", "col2", "col3"])
 
@@ -48,8 +46,7 @@ def get_3d_projection(pca_df: pd.DataFrame) -> dict:
     return {"x": pca_df["col1"], "y": pca_df["col2"], "z": pca_df["col3"]}
 
 
-# ! ERROR: Can't use cache because it is now invalid
-@task(cache_for=timedelta(days=1))
+@task
 def get_best_k_cluster(pca_df: pd.DataFrame, image_path: str) -> pd.DataFrame:
 
     fig = plt.figure(figsize=(10, 8))
@@ -125,18 +122,15 @@ def plot_clusters(
     wandb.log({"clusters": wandb.Image(image_path)})
 
 
+@hydra.main(
+    config_path="../config",
+    config_name="main",
+)
 def segment(config: DictConfig) -> None:
 
-    code_config = config
+    with Flow("segmentation") as flow:
 
-    with Flow(
-        "segmentation",
-    ) as flow:
-
-        data = pd.read_csv(
-            config.intermediate.path,
-            index_col=0,
-        )
+        data = pd.read_csv(config.intermediate.path)
 
         pca = get_pca_model(data)
 
@@ -146,7 +140,7 @@ def segment(config: DictConfig) -> None:
 
         k_best = get_best_k_cluster(
             pca_df,
-            code_config.image.kmeans,
+            config.image.kmeans,
         )
 
         model = get_clusters_model(pca_df, k_best)
@@ -160,8 +154,12 @@ def segment(config: DictConfig) -> None:
             pca_df,
             preds,
             projections,
-            code_config.image.clusters,
+            config.image.clusters,
         )
 
     flow.run()
     # flow.register(project_name="customer_segmentation")
+
+
+if __name__ == "__main__":
+    segment()

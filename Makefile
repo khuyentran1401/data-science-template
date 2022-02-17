@@ -5,7 +5,6 @@ PREFECT__FLOWS__CHECKPOINTING = true
 
 install: 
 	@echo "Installing..."
-	poetry shell
 	poetry install
 
 activate:
@@ -17,12 +16,9 @@ env:
 
 pull_data:
 	@echo "Pulling data..."
-	dvc pull
+	poetry run dvc pull
 
-setup: install activate pull_data env
+setup: activate install pull_data env
 
 test:
 	pytest
-
-
-	
