@@ -1,3 +1,4 @@
+from datetime import timedelta
 from typing import Tuple
 
 import bentoml
@@ -5,8 +6,10 @@ import bentoml.sklearn
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import prefect
 from omegaconf import DictConfig
 from prefect import Flow, task
+from prefect.engine import cache_validators
 from prefect.engine.results import LocalResult
 from prefect.engine.serializers import PandasSerializer
 from sklearn.cluster import KMeans
@@ -22,15 +25,19 @@ FINAL_OUTPUT = LocalResult(
     serializer=PandasSerializer("csv", serialize_kwargs={"index": False}),
 )
 
-
-@task(result=LocalResult("processors", location="PCA.pkl"))
+# ! ERROR: Can't use cache because it is now invalid
+@task(
+    result=LocalResult("processors", location="PCA.pkl"),
+    cache_for=timedelta(days=1),
+)
 def get_pca_model(data: pd.DataFrame) -> PCA:
     pca = PCA(n_components=3)
     pca.fit(data)
     return pca
 
 
-@artifact_task(result=FINAL_OUTPUT)
+# ! ERROR: Can't use cache because it is now invalid
+@artifact_task(result=FINAL_OUTPUT, cache_for=timedelta(days=1))
 def reduce_dimension(df: pd.DataFrame, pca: PCA) -> pd.DataFrame:
     return pd.DataFrame(pca.transform(df), columns=["col1", "col2", "col3"])
 
@@ -41,7 +48,8 @@ def get_3d_projection(pca_df: pd.DataFrame) -> dict:
     return {"x": pca_df["col1"], "y": pca_df["col2"], "z": pca_df["col3"]}
 
 
-@task
+# ! ERROR: Can't use cache because it is now invalid
+@task(cache_for=timedelta(days=1))
 def get_best_k_cluster(pca_df: pd.DataFrame, image_path: str) -> pd.DataFrame:
 
     fig = plt.figure(figsize=(10, 8))
