@@ -22,7 +22,6 @@ The data is downloaded from [Kaggle](https://www.kaggle.com/imakash3011/customer
 2. Set up the environment:
 ```bash
 make setup
-source activate_env.sh
 ```
 3. To persist the output of Prefect's flow, run 
 ```bash
