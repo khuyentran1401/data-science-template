@@ -11,7 +11,7 @@ The data is downloaded from [Kaggle](https://www.kaggle.com/imakash3011/customer
 * [BentoML](https://docs.bentoml.org/en/latest/): Deploy and serve machine learning models
 
 ## Explanations of Tools This Project
-- Go to [bentoml_demo branch](https://github.com/khuyentran1401/customer_segmentation/tree/bentoml_demo) to learn how to deploy your ML models in minutes
+- Go to [bentoml_demo branch](https://github.com/khuyentran1401/customer_segmentation/tree/bentoml_demo) to learn how to deploy your ML models with BentoML.
 - Go to [workshop branch](https://github.com/khuyentran1401/customer_segmentation/tree/workshop) to learn about Hydra, Prefect, and Weight & Biases.
 
 
