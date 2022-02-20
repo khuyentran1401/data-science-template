@@ -1,17 +1,17 @@
 # End-to-end Customer Segmentation Project
 
 ## Tools Used in This Project
-* [Prefect](https://www.prefect.io/): Orchestrate workflows
-* [hydra](https://hydra.cc/): Manage configuration files
-* [pre-commit plugins](https://towardsdatascience.com/4-pre-commit-plugins-to-automate-code-reviewing-and-formatting-in-python-c80c6d2e9f5?sk=2388804fb174d667ee5b680be22b8b1f): Automate code reviewing formatting 
-* [poetry](https://python-poetry.org/): Python dependency management
-* [DVC](https://dvc.org/): Data version control.
-* [BentoML](https://docs.bentoml.org/en/latest/): Deploy and serve machine learning models
+* [Prefect](https://www.prefect.io/): Orchestrate workflows - [article](https://towardsdatascience.com/orchestrate-a-data-science-project-in-python-with-prefect-e69c61a49074)
+* [hydra](https://hydra.cc/): Manage configuration files - [article](https://towardsdatascience.com/introduction-to-hydra-cc-a-powerful-framework-to-configure-your-data-science-projects-ed65713a53c6)
+* [Weights & Biases](https://wandb.ai/): Track and monitor experiments - [article](https://towardsdatascience.com/introduction-to-weight-biases-track-and-visualize-your-machine-learning-experiments-in-3-lines-9c9553b0f99d)
+* [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting  - [article](https://towardsdatascience.com/4-pre-commit-plugins-to-automate-code-reviewing-and-formatting-in-python-c80c6d2e9f5?sk=2388804fb174d667ee5b680be22b8b1f)
+* [poetry](https://python-poetry.org/): Python dependency management - [article](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f)
+* [DVC](https://dvc.org/): Data version control. - [article](https://towardsdatascience.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-7cb49c229fe0)
+* [BentoML](https://docs.bentoml.org/en/latest/): Deploy and serve machine learning models - [article](https://towardsdatascience.com/bentoml-create-an-ml-powered-prediction-service-in-minutes-23d135d6ca76)
 
-## Explanations of Tools This Project
-- Go to [bentoml_demo branch](https://github.com/khuyentran1401/customer_segmentation/tree/bentoml_demo) to learn how to deploy your ML models with BentoML.
-- Go to [workshop branch](https://github.com/khuyentran1401/customer_segmentation/tree/workshop) to learn about Hydra, Prefect, and Weight & Biases.
-
+## Variations of This Project
+- [workshop branch](https://github.com/khuyentran1401/customer_segmentation/tree/workshop) focuses on Hydra, Prefect, and Weight & Biases along with explanations.
+- [bentoml_demo branch](https://github.com/khuyentran1401/customer_segmentation/tree/bentoml_demo) focuses on BentoML along with explanations.
 
 ## Project Structure
 * `src`: consists of Python scripts
