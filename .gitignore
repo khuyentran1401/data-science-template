@@ -14,3 +14,4 @@ image
 wandb
 multirun
 main.log
+.venv
