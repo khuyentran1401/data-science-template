@@ -18,7 +18,8 @@ pull_data:
 	@echo "Pulling data..."
 	poetry run dvc pull
 
-setup: activate install pull_data env
+setup: activate 
+install: install pull_data env
 
 test:
 	pytest
