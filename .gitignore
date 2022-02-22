@@ -10,7 +10,7 @@ processors
 customer-segmentation-a-AULLE--py3.8
 *-workspace
 .tox
-image
+image/*.png
 wandb
 multirun
 main.log
