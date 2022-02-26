@@ -19,7 +19,7 @@ pull_data:
 	poetry run dvc pull
 
 setup: activate 
-install: install pull_data env
+install_all: install pull_data env
 
 test:
 	pytest

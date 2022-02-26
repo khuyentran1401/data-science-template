@@ -25,7 +25,7 @@
 2. Set up the environment:
 ```bash
 make setup
-make install
+make install_all
 ```
 3. To persist the output of Prefect's flow, run 
 ```bash
