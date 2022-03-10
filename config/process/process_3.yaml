@@ -1,22 +1,21 @@
 name: process_3
-columns:
-  keep:
-    - Income
-    - Recency
-    - NumWebVisitsMonth
-    - NumDealsPurchases
-    - NumWebPurchases
-    - NumCatalogPurchases
-    - NumStorePurchases
-    - Complain
-    - Response
-    - age
-    - enrollment_years
-    - family_size
+keep_columns:
+  - Income
+  - Recency
+  - NumWebVisitsMonth
+  - NumDealsPurchases
+  - NumWebPurchases
+  - NumCatalogPurchases
+  - NumStorePurchases
+  - Complain
+  - Response
+  - age
+  - enrollment_years
+  - family_size
 
-  remove_outliers_threshold:
-    age: 90
-    Income: 600000
+remove_outliers_threshold:
+  age: 90
+  Income: 600000
 
 encode:
   family_size:

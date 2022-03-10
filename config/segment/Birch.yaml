@@ -1,0 +1,3 @@
+algorithm: Birch
+args:
+  n_clusters: 3

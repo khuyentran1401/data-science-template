@@ -5,6 +5,7 @@ hydra:
     
 defaults:
   - process: process_2
+  - segment: KMeans
   - _self_
 
 raw_data: 
@@ -19,8 +20,6 @@ segmented:
   dir: data/final
   name: segmented.csv
   path: ${segmented.dir}/${segmented.name}
-  deserialize_kwargs:
-    index: false
 
 flow: all 
 
@@ -32,5 +31,5 @@ pca:
   - col3
 
 image:
-  kmeans: image/elbow.png
+  elbow: image/elbow.png
   clusters: image/cluster.png
