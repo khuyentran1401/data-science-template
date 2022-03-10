@@ -3,7 +3,6 @@
 .vscode
 __pycache__
 outputs
-data
 processors
 .DS_Store
 .ipynb_checkpoints
