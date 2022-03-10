@@ -1,4 +1,6 @@
+[core]
+    remote = ocelot
+['remote "ocelot"']
+    url = https://dagshub.com/khuyentran1401/customer_segmentation.dvc
 ['remote "origin"']
     url = https://dagshub.com/khuyentran1401/customer_segmentation_demo.dvc
-[core]
-remote = origin
