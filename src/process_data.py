@@ -68,9 +68,11 @@ def drop_outliers(df: pd.DataFrame, column_threshold: dict):
 
 
 @task(result=INTERMEDIATE_OUTPUT)
-def drop_columns_and_rows(df: pd.DataFrame, columns: DictConfig) -> pd.DataFrame:
-    df = df.pipe(drop_features, keep_columns=columns.keep).pipe(
-        drop_outliers, column_threshold=columns.remove_outliers_threshold
+def drop_columns_and_rows(
+    df: pd.DataFrame, keep_columns: DictConfig, remove_outliers_threshold: DictConfig
+) -> pd.DataFrame:
+    df = df.pipe(drop_features, keep_columns=keep_columns).pipe(
+        drop_outliers, column_threshold=remove_outliers_threshold
     )
 
     return df
@@ -103,7 +105,9 @@ def process_data(config: DictConfig):
         df = get_total_purchases(df)
         df = get_enrollment_years(df)
         df = get_family_size(df, config.process.encode.family_size)
-        df = drop_columns_and_rows(df, config.process.columns)
+        df = drop_columns_and_rows(
+            df, config.process.keep_columns, config.process.remove_outliers_threshold
+        )
         scaler = get_scaler(df)
         df = scale_features(df, scaler)
 

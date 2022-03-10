@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/process_data.py
+    deps:
+    - path: config/main.yaml
+      md5: 413f47291554e937fffcac2027faada6
+      size: 522
+    - path: config/process
+      md5: 3b82130fcc2aa6161ffda042584cf844.dir
+      size: 1683
+      nfiles: 4
+    - path: data/raw
+      md5: 10c3f643286f509fa7f6b4675d9efbad.dir
+      size: 222379
+      nfiles: 1
+    - path: src/process_data.py
+      md5: 2f1ddcf21d1514f18f5944d379ac1250
+      size: 3170
+    outs:
+    - path: data/intermediate
+      md5: e2082717fdfbbe71b178d7205dbf9ac9.dir
+      size: 404048
+      nfiles: 2
+  segment:
+    cmd: python src/segment.py
+    deps:
+    - path: config/main.yaml
+      md5: 413f47291554e937fffcac2027faada6
+      size: 522
+    - path: config/segment
+      md5: c704b1c0b8900693e098cef212f095bf.dir
+      size: 276
+      nfiles: 8
+    - path: data/intermediate
+      md5: e2082717fdfbbe71b178d7205dbf9ac9.dir
+      size: 404048
+      nfiles: 2
+    - path: src/segment.py
+      md5: 892a53397b3fc800bb5faec71a4df76d
+      size: 5089
+    outs:
+    - path: data/final
+      md5: 895bd4c5211f1f6e32ff37683e1a7210.dir
+      size: 868954
+      nfiles: 2
+    - path: image
+      md5: 920873df71bb734d51076b33e4fa0f1b.dir
+      size: 217931
+      nfiles: 3
