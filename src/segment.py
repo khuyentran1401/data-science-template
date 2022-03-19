@@ -5,7 +5,6 @@ import hydra
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import wandb
 from omegaconf import DictConfig, OmegaConf
 from prefect import Flow, case, task
 from prefect.engine.results import LocalResult
@@ -15,7 +14,10 @@ from sklearn.cluster import (DBSCAN, OPTICS, AffinityPropagation,
                              AgglomerativeClustering, Birch, KMeans, MeanShift,
                              SpectralClustering)
 from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
 from yellowbrick.cluster import KElbowVisualizer
+
+import wandb
 
 FINAL_OUTPUT = LocalResult(
     "data/final/",
@@ -30,7 +32,7 @@ def initialize_wandb(config: DictConfig):
         project="customer_segmentation",
         config=OmegaConf.to_object(config),
         reinit=True,
-        mode="disabled",
+        mode=config.wandb_mode,
     )
 
 
@@ -60,12 +62,14 @@ def check_has_nclusters(config: DictConfig):
 
 
 @task
-def get_best_k_cluster(pca_df: pd.DataFrame, image_path: str) -> pd.DataFrame:
+def get_best_k_cluster(
+    pca_df: pd.DataFrame, image_path: str, elbow_metric: str
+) -> pd.DataFrame:
 
     fig = plt.figure(figsize=(10, 8))
     fig.add_subplot(111)
 
-    elbow = KElbowVisualizer(KMeans(), metric="distortion")
+    elbow = KElbowVisualizer(KMeans(), metric=elbow_metric)
     elbow.fit(pca_df)
     elbow.fig.savefig(image_path)
 
@@ -110,6 +114,27 @@ def predict_without_predefined_clusters(
 
     # Predict
     return model.fit_predict(pca_df)
+
+
+@task
+def get_silhouette_score(pca_df: pd.DataFrame, labels: pd.DataFrame) -> float:
+    sil_score = silhouette_score(pca_df, labels)
+    wandb.log({"silhouette_score": sil_score})
+    return sil_score
+
+
+@task
+def plot_silhouette_score(
+    pca_df: pd.DataFrame, silhouette_score: float, image_path: str
+):
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111)
+
+    ax.set_xlim([-1, 1])
+    ax.set_ylim([0, len()])
+    plt.plot(silhouette_score)
+    plt.savefig(image_path)
+    wandb.log({"silhouette_score_plot": wandb.Image(image_path)})
 
 
 @task(result=FINAL_OUTPUT)
@@ -170,7 +195,7 @@ def segment(config: DictConfig) -> None:
         has_nclusters = check_has_nclusters(config)
 
         with case(has_nclusters, True):
-            k_best = get_best_k_cluster(pca_df, config.image.elbow)
+            k_best = get_best_k_cluster(pca_df, config.image.elbow, config.elbow_metric)
             prediction1 = predict_with_predefined_clusters(
                 pca_df, k_best, config.segment
             )
@@ -179,6 +204,8 @@ def segment(config: DictConfig) -> None:
             prediction2 = predict_without_predefined_clusters(pca_df, config.segment)
 
         prediction = merge(prediction1, prediction2)
+
+        score = get_silhouette_score(pca_df, prediction)
 
         data = insert_clusters_to_df(data, prediction)
 
