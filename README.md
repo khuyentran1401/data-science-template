@@ -47,18 +47,4 @@ Create a project based on the template:
 cookiecutter https://github.com/khuyentran1401/data-science-template
 ```
 
-### Set Up the environment
-1. Install [Poetry](https://python-poetry.org/docs/#installation)
-2. Set up the environment:
-```bash
-make activate
-make set_up
-```
-
-### Install new packages
-To install new PyPI packages, run:
-```
-poetry add <package-name>
-```
-
 
