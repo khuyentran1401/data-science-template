@@ -13,11 +13,15 @@ activate:
 initialize_git:
 	git init 
 
-set_up: initialize_git install
+pull_data:
+	poetry run dvc pull
+
+setup: initialize_git install
 
 test:
 	pytest
 
-clean: 
-	@echo "Deleting log files..."
-	find . -name "*.log" -type f -delete
+## Delete all compiled Python files
+clean:
+	find . -type f -name "*.py[co]" -delete
+	rm -rf __pycache__ .pytest_cache

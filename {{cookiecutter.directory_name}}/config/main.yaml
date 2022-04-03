@@ -1,0 +1,17 @@
+defaults:
+  - process: process1
+  - model: model1
+  - _self_
+
+raw: 
+  path: data/raw/sample.csv
+
+processed:
+  dir: data/processed
+  name: processed.csv
+  path: ${processed.dir}/${processed.name}
+
+final:
+  dir: data/final
+  name: final.csv
+  path: ${final.dir}/${final.name}

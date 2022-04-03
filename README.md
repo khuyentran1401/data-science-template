@@ -3,19 +3,27 @@
 ### What is this?
 This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
 
+## Tools used in this project
+* [hydra](https://hydra.cc/): Manage configuration files - [article](https://towardsdatascience.com/introduction-to-hydra-cc-a-powerful-framework-to-configure-your-data-science-projects-ed65713a53c6)
+* [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting  - [article](https://towardsdatascience.com/4-pre-commit-plugins-to-automate-code-reviewing-and-formatting-in-python-c80c6d2e9f5?sk=2388804fb174d667ee5b680be22b8b1f)
+* [DVC](https://dvc.org/): Data version control. - [article](https://towardsdatascience.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-7cb49c229fe0)
+
 ### Project Structure
 ```bash
 .
 ├── config                      
 │   ├── main.yaml                   # Main configuration file
-│   ├── model                       # Configuration for training model
-│   └── process                     # Configuration for processing data
+│   ├── model                       # Configurations for training model
+│   │   ├── model1.yaml             # First variation of parameters to train model
+│   │   └── model2.yaml             # Second variation of parameters to train model
+│   └── process                     # Configurations for processing data
+│       ├── process1.yaml           # First variation of parameters to process data
+│       └── process2.yaml           # Second variation of parameters to process data
 ├── data            
 │   ├── final                       # data after training the model
 │   ├── processed                   # data after processing
 │   ├── raw                         # raw data
 │   └── raw.dvc                     # DVC file of data/raw
-├── dvc.lock                        # record the state of your DVC pipeline
 ├── dvc.yaml                        # DVC pipeline
 ├── .flake8                         # configuration for flake8 - a Python formatter tool
 ├── .gitignore                      # ignore files that cannot commit to Git

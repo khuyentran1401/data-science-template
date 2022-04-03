@@ -85,3 +85,9 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# pytest cache
+.pytest_cache/
+
+# Hydra logs
+outputs

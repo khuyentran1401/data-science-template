@@ -5,8 +5,9 @@ description = ""
 authors = ["{{cookiecutter.author_name}}"]
 
 [tool.poetry.dependencies]
-python = "{{cookiecutter.compatible_python_versions}}"
+python = "^3.8"
 dvc = "^2.10.0"
+hydra-core = "^1.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
