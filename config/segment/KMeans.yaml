@@ -1,3 +1,0 @@
-algorithm: KMeans
-args:
-  n_clusters: 8
