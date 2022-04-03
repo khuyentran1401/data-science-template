@@ -85,4 +85,3 @@ target/
 
 # Mypy cache
 .mypy_cache/
-/models
