@@ -1,6 +1,6 @@
-## Data Science Cookie Cutter
+# Data Science Cookie Cutter
 
-### What is this?
+## What is this?
 This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
 
 ## Tools used in this project
@@ -8,7 +8,7 @@ This repository is a template for a data science project. This is the project st
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting  - [article](https://towardsdatascience.com/4-pre-commit-plugins-to-automate-code-reviewing-and-formatting-in-python-c80c6d2e9f5?sk=2388804fb174d667ee5b680be22b8b1f)
 * [DVC](https://dvc.org/): Data version control. - [article](https://towardsdatascience.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-7cb49c229fe0)
 
-### Project Structure
+## Project Structure
 ```bash
 .
 ├── config                      
@@ -43,7 +43,7 @@ This repository is a template for a data science project. This is the project st
     └── test_train_model.py         # test functions for train_model.py
 ```
 
-### How to user this project
+## How to user this project
 
 Install Cookiecutter:
 ```bash
