@@ -6,6 +6,7 @@ authors = ["{{cookiecutter.author_name}}"]
 
 [tool.poetry.dependencies]
 python = "{{cookiecutter.compatible_python_versions}}"
+dvc = "^2.10.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

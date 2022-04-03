@@ -1,7 +1,4 @@
-## Data Science Cookie Cutter
-
-### What is this?
-This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
+## {{cookiecutter.directory_name}}
 
 ### Project Structure
 ```bash
@@ -35,7 +32,7 @@ This repository is a template for a data science project. This is the project st
     └── test_train_model.py         # test functions for train_model.py
 ```
 
-### How to user this project
+### How to use this project
 
 Install Cookiecutter:
 ```bash

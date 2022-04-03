@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/process.py
+    deps:
+    - path: config/main.yaml
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: config/process
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+    - path: data/raw
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+    - path: src/process.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    outs:
+    - path: data/processed
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+    - path: config/main.yaml
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    - path: config/model
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+    - path: data/processed
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+    - path: src/train_model.py
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+    outs:
+    - path: data/final
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
+    - path: models
+      md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
+      size: 0
+      nfiles: 1
