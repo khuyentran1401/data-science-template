@@ -21,9 +21,13 @@ setup: initialize_git install
 test:
 	pytest
 
-docs:
-	@echo Save the output to docs... 
-	pdoc src -o docs --force --http localhost:8080
+docs_view:
+	@echo View API documentation... 
+	pdoc src --http localhost:8080
+
+docs_save:
+	@echo Save documentation to docs... 
+	pdoc src -o docs
 
 ## Delete all compiled Python files
 clean:
