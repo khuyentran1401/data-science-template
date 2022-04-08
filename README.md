@@ -48,7 +48,7 @@ This repository is a template for a data science project. This is the project st
     └── test_train_model.py         # test functions for train_model.py
 ```
 
-## How to user this project
+## How to use this project
 
 Install Cookiecutter:
 ```bash
