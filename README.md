@@ -1,3 +1,5 @@
+[![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-blue?logo=medium)](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800)
+
 # Data Science Cookie Cutter
 
 ## What is this?
