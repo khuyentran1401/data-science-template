@@ -5,6 +5,9 @@ install:
 	@echo "Installing..."
 	poetry install
 	poetry run pre-commit install
+	git rm -r --cached 'data/raw'
+	git rm -r --cached 'data/processed'
+	git rm -r --cached 'data/final'
 
 activate:
 	@echo "Activating virtual environment"
