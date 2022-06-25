@@ -45,10 +45,21 @@
 ```
 
 ## Set up the environment
+Create and activate virtual environment
 ```bash
-make setup
+python3 -m venv venv
+source venv/bin/activate
 ```
 
+Install dependencies from `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+Set up Git:
+```bash
+make setup_git
+```
 ## Install new packages
 To install new PyPI packages, run:
 ```bash

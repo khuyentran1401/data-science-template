@@ -1,4 +1,4 @@
-.PHONY: notebook docs
+.PHONY: notebook docs pip
 
 install: 
 	@echo "Installing..."
