@@ -1,5 +1,3 @@
 {
-    "directory_name": "project-name",
-    "author_name": "your-name",
-    "compatible_python_versions": "^3.8"
+    "directory_name": "project-name"
 }
