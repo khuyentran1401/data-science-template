@@ -4,15 +4,25 @@
 This template is the result of my years refining the best way to structure a data science project so that it is reproducible and maintainable.
 
 This template allows you to:
+
 :white_check_mark: Create a readable structure for your  project
+
 :white_check_mark: Automatically run tests when committing your code
+
 :white_check_mark: Enforce type hints at runtime 
+
 :white_check_mark: Check issues in your code before committing
+
 :white_check_mark: Efficiently manage the dependencies in your project
+
 :white_check_mark: Create short and readable commands for repeatable tasks
+
 :white_check_mark: Only rerun the components of a pipeline whose dependencies change
+
 :white_check_mark:	Automatically document your code
+
 :white_check_mark:	Observe and create all runs from the UI
+
 :white_check_mark: Seamlessly add scheduling, notifications, caching, and retries to your code
 
 ## Tools used in this project
