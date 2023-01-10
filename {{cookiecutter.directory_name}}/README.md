@@ -62,8 +62,6 @@ This template allows you to:
 ```
 
 ## Quick Start
-This sections will show you how to use this template.
-
 ### Set up the environment
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 2. Set up the environment:
