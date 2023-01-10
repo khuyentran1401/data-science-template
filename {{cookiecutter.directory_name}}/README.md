@@ -69,11 +69,6 @@ This template allows you to:
 make setup
 make activate
 ```
-3. Download the example data:
-```bash
-make download_data
-```
-
 ### Install new packages
 To install new PyPI packages, run:
 ```bash
