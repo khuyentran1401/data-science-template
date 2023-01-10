@@ -1,0 +1,29 @@
+name: Test code and app
+on:
+  push:
+    paths:
+      - src/**
+      - tests/**
+      - .github/workflows/run_test.yaml
+jobs:
+  test_model:
+    name: Test processed code and model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        id: checkout
+        uses: actions/checkout@v2
+
+      - name: Environment setup
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        
+      - name: Install packages
+        run: poetry install
+
+      - name: Run tests
+        run: poetry run pytest 

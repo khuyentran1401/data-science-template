@@ -90,5 +90,7 @@ target/
 # pytest cache
 .pytest_cache/
 
-# Hydra logs
-outputs
+# Data and models
+data/ 
+models/
+!.gitkeep

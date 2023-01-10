@@ -6,16 +6,19 @@ authors = ["{{cookiecutter.author_name}}"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dvc = "^2.10.0"
-hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
 notebook = "^6.4.10"
-pre-commit = "^2.19.0"
+prefect = "^2.7.6"
+scikit-learn = "^1.2.0"
+pandas = "^1.5.2"
+prefect-jupyter = "^0.2.0"
+interrogate = "^1.5.0"
+joblib = "^1.2.0"
 
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
-pre-commit = "^2.17.0"
+pre-commit = "^2.19.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
