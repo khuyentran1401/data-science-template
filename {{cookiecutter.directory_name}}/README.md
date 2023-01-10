@@ -104,10 +104,15 @@ After [creating a deployment](https://towardsdatascience.com/build-a-full-stack-
 or custom parameters:
 ![](https://miro.medium.com/max/1400/1*jGKmPR3aoXeIs3SEaHPhBg.gif)
 
-# Auto-generate API documentation
+### Auto-generate API documentation
 
 To auto-generate API document for your project, run:
 
 ```bash
 make docs_save
 ```
+
+### Run tests when creating a PR
+When creating a PR, the tests in your `tests` folder will automatically run. 
+
+![](images/github_actions.png)

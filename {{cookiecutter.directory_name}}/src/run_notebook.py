@@ -7,7 +7,7 @@ from prefect_jupyter import notebook
 
 @flow
 def run_notebook(location: Location = Location()):
-    """Run a notebook with specified parameters then 
+    """Run a notebook with specified parameters then
     generate a notebook with the outputs
 
     Parameters
