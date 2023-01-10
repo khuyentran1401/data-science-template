@@ -1,6 +1,6 @@
 [![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-blue?logo=medium)](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800)
 
-# Data Science Cookie Cutter
+# Data Science Cookie Cutter for Prefect
 
 ## Why Should You Use This Template?
 This template is the result of my years refining the best way to structure a data science project so that it is reproducible and maintainable.
