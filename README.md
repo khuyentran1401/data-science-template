@@ -2,7 +2,7 @@
 
 # Data Science Cookie Cutter
 
-**Note**: _This template uses poetry. If you prefer using pip, go to the [pip](https://github.com/khuyentran1401/data-science-template/tree/dvc-pip) branch instead._
+**Note**: _This template uses poetry. If you prefer using pip, go to the [dvc-pip](https://github.com/khuyentran1401/data-science-template/tree/dvc-pip) branch instead._
 ## What is this?
 This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
 
