@@ -73,6 +73,6 @@ Create a project based on the template:
 ```bash
 cookiecutter https://github.com/khuyentran1401/data-science-template
 ```
-
-Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4).
-
+## Resources
+- [Article](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4)
+- [Quick start](https://github.com/khuyentran1401/data-science-template/blob/prefect-poetry/%7B%7Bcookiecutter.directory_name%7D%7D/README.md)
