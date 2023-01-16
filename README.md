@@ -3,6 +3,7 @@
 # Data Science Cookie Cutter for Prefect
 
 ## Why Should You Use This Template?
+
 This template is the result of my years refining the best way to structure a data science project so that it is reproducible and maintainable.
 
 This template allows you to:
@@ -19,13 +20,11 @@ This template allows you to:
 
 :white_check_mark: Create short and readable commands for repeatable tasks
 
-:white_check_mark: Only rerun the components of a pipeline whose dependencies change
+:white_check_mark: Rerun only modified components of a pipeline
 
 :white_check_mark:	Automatically document your code
 
-:white_check_mark:	Observe and create all runs from the UI
-
-:white_check_mark: Seamlessly add scheduling, notifications, caching, and retries to your code
+:white_check_mark:	Observe and automate your code
 
 ## Tools used in this project
 * [Poetry](https://python-poetry.org/): Dependency management - [article](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f)
@@ -62,7 +61,6 @@ This template allows you to:
     ├── test_process.py             # test functions for process.py
     └── test_train_model.py         # test functions for train_model.py
 ```
-
 
 ## How to use this project
 
