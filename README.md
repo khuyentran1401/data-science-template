@@ -74,7 +74,7 @@ pip install cookiecutter
 
 Create a project based on the template:
 ```bash
-cookiecutter https://github.com/khuyentran1401/data-science-template --checkout prefect
+cookiecutter https://github.com/khuyentran1401/data-science-template
 ```
 
 Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800).
