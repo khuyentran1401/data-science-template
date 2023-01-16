@@ -74,5 +74,5 @@ Create a project based on the template:
 cookiecutter https://github.com/khuyentran1401/data-science-template
 ```
 
-Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800).
+Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4).
 
