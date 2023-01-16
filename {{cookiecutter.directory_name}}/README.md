@@ -1,3 +1,5 @@
+[![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-red?logo=medium)](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4)
+
 # Data Science Cookie Cutter
 
 ## Why Should You Use This Template?
@@ -17,13 +19,11 @@ This template allows you to:
 
 :white_check_mark: Create short and readable commands for repeatable tasks
 
-:white_check_mark: Only rerun the components of a pipeline whose dependencies change
+:white_check_mark: Rerun only modified components of a pipeline
 
 :white_check_mark:	Automatically document your code
 
-:white_check_mark:	Observe and create all runs from the UI
-
-:white_check_mark: Seamlessly add scheduling, notifications, caching, and retries to your code
+:white_check_mark:	Observe and automate your code
 
 ## Tools used in this project
 * [Poetry](https://python-poetry.org/): Dependency management - [article](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f)
