@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "{{cookiecutter.directory_name}}"
+name = "ds"
 version = "0.1.0"
 description = ""
-authors = ["{{cookiecutter.author_name}}"]
+authors = ["eyadsibai"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 pdoc3 = "^0.10.0"
 notebook = "^6.4.10"
 prefect = "^2.7.6"
@@ -19,6 +19,9 @@ joblib = "^1.2.0"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 pre-commit = "^2.19.0"
+# ipykernel
+# jupytext
+# awscli
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -36,6 +39,6 @@ exclude = '''
 | \.venv
 | _build
 | buck-out
-| build   
-)/ 
+| build
+)/
 '''
