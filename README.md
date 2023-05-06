@@ -1,4 +1,4 @@
-[![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-blue?logo=medium)](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4)
+[![View Article](https://img.shields.io/badge/Article-View%20article-blue)](https://mathdatasimplified.com/2023/05/06/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-3/)
 
 # Data Science Cookie Cutter for Prefect
 
