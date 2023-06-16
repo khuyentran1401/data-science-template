@@ -47,8 +47,7 @@
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 2. Set up the environment:
 ```bash
-make activate
-make setup
+make env 
 ```
 
 ## Install new packages
