@@ -1,17 +1,15 @@
 [tool.poetry]
-name = "{{cookiecutter.directory_name}}"
+name = "test-template"
 version = "0.1.0"
 description = ""
-authors = ["{{cookiecutter.author_name}}"]
+authors = ["Khuyen Tran"]
 
 [tool.poetry.dependencies]
-python = "{{cookiecutter.compatible_python_versions}}"
+python = "^3.9"
 dvc = "^2.10.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
 notebook = "^6.4.10"
-pre-commit = "^2.19.0"
-
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
@@ -21,18 +19,34 @@ pre-commit = "^2.17.0"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.black]
+[tool.ruff]
+# black 
 line-length = 79
-include = '\.pyi?$'
-exclude = '''
-/(
-	\.git
-| \.hg
-| \.mypy_cache
-| \.tox
-| \.venv
-| _build
-| buck-out
-| build   
-)/ 
-'''
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+# flake8
+ignore = ["E501"]
+select = ["B","C","E","F","W","B9"]
+
+[tool.ruff.mccabe]
+max-complexity = 10
