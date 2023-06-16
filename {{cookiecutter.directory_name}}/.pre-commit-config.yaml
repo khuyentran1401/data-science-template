@@ -17,3 +17,4 @@ repos:
     hooks:
       - id: interrogate
         args: [src, -v, -i, --fail-under=80]
+        pass_filenames: false
