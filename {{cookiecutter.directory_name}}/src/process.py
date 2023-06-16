@@ -5,7 +5,6 @@ Author: Khuyen Tran
 """
 
 import hydra
-from hydra.utils import to_absolute_path as abspath
 from omegaconf import DictConfig
 
 
@@ -13,8 +12,7 @@ from omegaconf import DictConfig
 def process_data(config: DictConfig):
     """Function to process the data"""
 
-    raw_path = abspath(config.raw.path)
-    print(f"Process data using {raw_path}")
+    print(f"Process data using {config.data.raw}")
     print(f"Columns used: {config.process.use_columns}")
 
 
