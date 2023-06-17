@@ -1,4 +1,4 @@
-[![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-blue?logo=medium)](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800)
+[![View on Medium](https://img.shields.io/badge/Medium-View%20on%20Medium-blue?logo=medium)](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
 
 # Data Science Cookie Cutter
 
@@ -30,8 +30,6 @@ This repository is a template for a data science project. This is the project st
 │   ├── raw                         # raw data
 │   └── raw.dvc                     # DVC file of data/raw
 ├── docs                            # documentation for your project
-├── dvc.yaml                        # DVC pipeline
-├── .flake8                         # configuration for flake8 - a Python formatter tool
 ├── .gitignore                      # ignore files that cannot commit to Git
 ├── Makefile                        # store useful commands to set up the environment
 ├── models                          # store models
@@ -61,5 +59,5 @@ Create a project based on the template:
 cookiecutter https://github.com/khuyentran1401/data-science-template --checkout dvc-poetry
 ```
 
-Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800).
+Find detailed explanation of this template [here](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/).
 
