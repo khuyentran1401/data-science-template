@@ -71,7 +71,7 @@ pip install cookiecutter
 
 Create a project based on the template:
 ```bash
-cookiecutter https://github.com/khuyentran1401/data-science-template
+cookiecutter https://github.com/khuyentran1401/data-science-template --checkout prefect-poetry
 ```
 ## Resources
 - [Article](https://towardsdatascience.com/how-to-structure-an-ml-project-for-reproducibility-and-maintainability-54d5e53b4c82?sk=c3d05ae5b8ccc95822618d0dacfad8a4)
