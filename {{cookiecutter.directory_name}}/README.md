@@ -44,7 +44,7 @@ To push the data to remote storage, type:
 dvc push 
 ```
 
-# Auto-generate API documentation
+## Auto-generate API documentation
 
 To auto-generate API document for your project, run:
 
