@@ -3,8 +3,10 @@
 # Data Science Cookie Cutter
 
 **Note**: _This template uses poetry. If you prefer using pip, go to the [dvc-pip](https://github.com/khuyentran1401/data-science-template/tree/dvc-pip) branch instead._
-## What is this?
-This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
+## Why?
+It is important to structure your data science project based on a certain standard so that your teammates can easily maintain and modify your project.
+
+This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.  
 
 ## Tools used in this project
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/2023/06/12/poetry-a-better-way-to-manage-python-dependencies/)
