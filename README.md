@@ -61,5 +61,7 @@ Create a project based on the template:
 cookiecutter https://github.com/khuyentran1401/data-science-template --checkout dvc-poetry
 ```
 
-Find detailed explanation of this template [here](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/).
+Resources for a detailed explanation of this template:
+- [Article](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
+- [Video](https://youtu.be/TzvcPi3nsdw)
 
