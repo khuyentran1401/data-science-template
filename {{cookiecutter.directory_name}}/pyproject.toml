@@ -1,16 +1,14 @@
 [tool.poetry]
-name = "test-template"
+name = "{{ cookiecutter.directory_name }}"
 version = "0.1.0"
 description = ""
-authors = ["Khuyen Tran"]
+python = "{{ cookiecutter.author_name }}"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "{{ cookiecutter.compatible_python_versions }}"
 dvc = "^2.10.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
-notebook = "^6.4.10"
-ruff = "^0.0.272"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
