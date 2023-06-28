@@ -19,13 +19,16 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-# black 
-line-length = 79
+ignore = ["E501"]
+select = ["B","C","E","F","W","B9", "I", "N", "Q"]
+
+# Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
     ".direnv",
     ".eggs",
     ".git",
+    ".git-rewrite",
     ".hg",
     ".mypy_cache",
     ".nox",
@@ -43,9 +46,9 @@ exclude = [
     "node_modules",
     "venv",
 ]
-# flake8
-ignore = ["E501"]
-select = ["B","C","E","F","W","B9", "I", "N", "Q"]
+
+# Same as Black.
+line-length = 88
 
 [tool.ruff.mccabe]
 max-complexity = 10
