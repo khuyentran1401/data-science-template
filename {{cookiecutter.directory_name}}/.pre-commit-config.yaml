@@ -12,5 +12,5 @@ repos:
     rev: 1.5.0
     hooks:
       - id: interrogate
-        args: [src, -v, -i, --fail-under=80]
+        args: [src, -vv, -i, -I, -M, --fail-under=80]
         pass_filenames: false
