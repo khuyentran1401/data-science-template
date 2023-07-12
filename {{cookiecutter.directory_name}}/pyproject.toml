@@ -2,7 +2,7 @@
 name = "{{ cookiecutter.directory_name }}"
 version = "0.1.0"
 description = ""
-authors = "{{ cookiecutter.author_name }}"
+authors = ["{{ cookiecutter.author_name }}"]
 
 [tool.poetry.dependencies]
 python = "{{ cookiecutter.compatible_python_versions }}"
