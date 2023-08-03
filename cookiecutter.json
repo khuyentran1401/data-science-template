@@ -1,5 +1,5 @@
 {
-    "directory_name": "project-name",
-    "author_name": "Your Name",
+    "directory_name": "Foster and Associates Data Warehouse",
+    "author_name": "Pranav Arora",
     "compatible_python_versions": "^3.8"
 }
