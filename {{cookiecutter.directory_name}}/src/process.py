@@ -1,10 +1,11 @@
 """
-This is the demo code that uses hydra to access the parameters in under the directory config.
+This is the ETL procedure code that takes in data sources and returns backroom data.
 
-Author: Khuyen Tran
+Author: Pranav Arora
 """
 
 import hydra
+import pandas as pd
 from omegaconf import DictConfig
 
 
@@ -14,6 +15,10 @@ def process_data(config: DictConfig):
 
     print(f"Process data using {config.data.raw}")
     print(f"Columns used: {config.process.use_columns}")
+
+    data = pd.read_csv(config.data.raw)
+    print(data.to_string())
+
 
 
 if __name__ == "__main__":
