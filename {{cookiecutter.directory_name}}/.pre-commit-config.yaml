@@ -8,9 +8,3 @@ repos:
     rev: 23.3.0
     hooks:
       - id: black
-  - repo: https://github.com/econchick/interrogate
-    rev: 1.5.0
-    hooks:
-      - id: interrogate
-        args: [src, -vv, -i, -I, -M, --fail-under=80]
-        pass_filenames: false
