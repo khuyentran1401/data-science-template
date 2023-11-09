@@ -1,21 +1,25 @@
-.PHONY: tests docs
+init-env:
+	pip install pipenv
+	@echo Activando el entorno virtual
+	export PIPENV_VENV_IN_PROJECT=1
+	pipenv shell
+prepare-env:
+	@echo Creando entorno virtual...
+	export PIPENV_VENV_IN_PROJECT=1
+	pipenv shell
+	@echo Instalando dependencias...
+	pipenv install -r requirements.txt
+create-project:
+	@echo installando cookieter
+	pip install cookiecutter
+	@echo creando projecto desde template
+	cookiecutter https://github.com/kascesar/data-science-template
 
-dependencies: 
-	@echo "Initializing Git..."
-	git init
-	@echo "Installing dependencies..."
-	poetry install
-	poetry run pre-commit install
+create-docs:
+	@echo Creando y guardando la documentacion...
+	mkdir docs
+	pdoc . -o docs --force\
 
-env: dependencies
-	@echo "Activating virtual environment..."
-	poetry shell
-
-tests:
-	pytest
-
-docs:
-	@echo Save documentation to docs... 
-	pdoc src -o docs --force
-	@echo View API documentation... 
-	pdoc src --http localhost:8080	
+serve-docs:
+	@echo Creando la vista de la documentacion...
+	pdoc .. --http localhost:8080
