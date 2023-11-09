@@ -91,3 +91,6 @@ target/
 
 # Hydra logs
 outputs
+
+# Makefile
+Makefile
