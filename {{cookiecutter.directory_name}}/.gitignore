@@ -83,6 +83,15 @@ target/
 # vim
 *.swp
 *.swo
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
 
 # Caches
 .mypy_cache/
