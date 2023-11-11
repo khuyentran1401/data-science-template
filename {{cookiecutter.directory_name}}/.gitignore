@@ -83,6 +83,7 @@ target/
 # vim
 *.swp
 *.swo
+
 # Emacs
 *~
 \#*\#
@@ -103,3 +104,6 @@ outputs
 
 # Makefile
 Makefile
+
+#pipenv
+Pipfile.lock
