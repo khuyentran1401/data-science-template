@@ -1,10 +1,32 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-yaml
+    - id: check-json
+    - id: check-added-large-files
+
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: v3.12.0
+    hooks:
+    - id: reorder-python-imports
+
+  - repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+    - id: black
+
+  # - repo: https://github.com/PyCQA/flake8
+  #  rev: 6.1.0
+  #  hooks:
+  #  - id: flake8
+  
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.260"
+    rev: v0.1.5
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
