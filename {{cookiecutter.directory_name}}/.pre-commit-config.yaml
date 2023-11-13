@@ -25,8 +25,12 @@ repos:
   #  hooks:
   #  - id: flake8
   
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
     rev: v0.1.5
     hooks:
+      # Run the linter.
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
+        args: [ --fix ]
+      # Run the formatter.
+      - id: ruff-format
