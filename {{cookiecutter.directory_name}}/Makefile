@@ -1,25 +1,15 @@
-init-env:
-	pip install pipenv
-	@echo Activando el entorno virtual
-	export PIPENV_VENV_IN_PROJECT=1
+init-env: 
+	@echo "Creating env"
 	pipenv shell
-prepare-env:
-	@echo Creando entorno virtual...
-	export PIPENV_VENV_IN_PROJECT=1
+	@echo "Installing dependencies"
+	pipenv install
+
+env: dependencies
+	@echo "Activating virtual environment..."
 	pipenv shell
-	@echo Instalando dependencias...
-	pipenv install -r requirements.txt
-create-project:
-	@echo installando cookieter
-	pip install cookiecutter
-	@echo creando projecto desde template
-	cookiecutter https://github.com/kascesar/data-science-template
 
-create-docs:
-	@echo Creando y guardando la documentacion...
-	mkdir docs
-	pdoc . -o docs --force\
-
-serve-docs:
-	@echo Creando la vista de la documentacion...
-	pdoc .. --http localhost:8080
+docs:
+	@echo Save documentation to docs... 
+	pdoc src -o docs --force
+	@echo View API documentation... 
+	pdoc src --http localhost:8080	

@@ -102,8 +102,5 @@ tramp
 # Hydra logs
 outputs
 
-# Makefile
-Makefile
-
 #pipenv
 Pipfile.lock

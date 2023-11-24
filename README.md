@@ -9,7 +9,6 @@ It is important to structure your data science project based on a certain standa
 This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.  
 
 ## Tools used in this project
-* [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/2023/06/12/poetry-a-better-way-to-manage-python-dependencies/)
 * [hydra](https://hydra.cc/): Manage configuration files - [article](https://mathdatasimplified.com/2023/05/25/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [DVC](https://dvc.org/): Data version control - [article](https://mathdatasimplified.com/2023/02/20/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-2/)
@@ -53,15 +52,9 @@ This repository provides a template that incorporates best practices to create a
 
 Install Cookiecutter:
 ```bash
-pip install cookiecutter
+pip install cookiecutter pre-commit pipenv
 ```
 
 Create a project based on the template:
 ```bash
-cookiecutter https://github.com/khuyentran1401/data-science-template --checkout dvc-poetry
-```
-
-Resources for a detailed explanation of this template:
-- [Article](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
-- [Video](https://youtu.be/TzvcPi3nsdw)
-
+cookiecutter https://github.com/kascesar/data-science-template
