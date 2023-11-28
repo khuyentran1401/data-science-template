@@ -2,7 +2,6 @@
 
 # Data Science Cookie Cutter
 
-**Note**: _This template uses poetry. If you prefer using pip, go to the [dvc-pip](https://github.com/khuyentran1401/data-science-template/tree/dvc-pip) branch instead._
 ## Why?
 It is important to structure your data science project based on a certain standard so that your teammates can easily maintain and modify your project.
 
@@ -52,9 +51,10 @@ This repository provides a template that incorporates best practices to create a
 
 Install Cookiecutter:
 ```bash
-pip install cookiecutter pre-commit pipenv
+pip install cookiecutter pre-commit
 ```
 
 Create a project based on the template:
 ```bash
 cookiecutter https://github.com/kascesar/data-science-template
+```
