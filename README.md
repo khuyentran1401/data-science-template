@@ -62,6 +62,6 @@ cookiecutter https://github.com/khuyentran1401/data-science-template --checkout 
 ```
 
 Resources for a detailed explanation of this template:
-- [Article](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
+- [Article](https://mathdatasimplified.com/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
 - [Video](https://youtu.be/TzvcPi3nsdw)
 
