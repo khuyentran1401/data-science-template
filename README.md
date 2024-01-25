@@ -42,7 +42,6 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 │   ├── final                   # Data after training the model
 │   ├── processed               # Data after processing
 │   ├── raw                     # Raw data
-│   └── raw.dvc                 # DVC file of data/raw
 ├── docs                        # Documentation for your project
 ├── Makefile                    # Store useful commands to set up the environment
 ├── .gitignore                  # Ignore files that cannot commit to Git  
