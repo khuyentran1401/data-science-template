@@ -15,9 +15,11 @@ The templates are organized in different branches, where each template is expect
 
 The `aws-sagemaker` branch provides to you a directory structure to work with the Amazon SageMaker, an end-to-end cloud-based ML framework offered by Amazon Web Services (AWS). The following tools are expected to be used:
 
-| Package management | Config file manager | Data version control |
-|   ---               |        ---          |     ---              |
-|   [Poetry](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies)        |       [Hydra](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)         |   [Amazon S3](https://aws.amazon.com/s3/)          |
+| Functionality  | Tool | Comments | Links |
+|   ---               |        ---   |     ---   | --- |
+| Package management |   Poetry | | [🔗](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies) [🔗](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f) |
+| Config file manager | Hydra | Stop Hard Coding in a Data Science Project – Use Config Files Instead | [🔗](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead) [🔗](https://hydra.cc/) |
+| Data version control | Amazon S3 | Manage configuration files | [🔗](https://aws.amazon.com/s3) |
 
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
