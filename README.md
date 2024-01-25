@@ -61,7 +61,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
     └── test_train_model.py     # Test functions for train_model.py
 ```
 
-## How to use this project
+## Setting up this project
 
 ### Initial setup
 
@@ -85,8 +85,27 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 1. Login on [AWS console](https://console.aws.amazon.com/)
 2. Services -> Amazon SageMaker
 3. On the left-side menu: Studio -> Create a SageMaker domain -> Quick setup -> setup
-4. On the left-side menu: Admin configuration -> Lifecycle configurations -> Code Editor tab -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
 5. On the left-side menu: Admin configuration -> Domains -> Add user -> Follow the default configuration
 6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
 7. Applications -> Code Editor -> Create Code Editor space -> Name your Code Editor space
-8. 
+
+### Create a lifecycle startup script
+
+1. On the left-side menu: Admin configuration -> Lifecycle configurations -> Code Editor tab -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
+8. On the AWS web broswer, open the cloud shell at the bottom left corner.
+9. [Run](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor-use-lifecycle-configurations.html#code-editor-use-lifecycle-configurations-studio-create)
+    ```sh
+        aws sagemaker update-user-profile \
+    --domain-id <domain-id> \
+    --user-profile-name <user-profile-name> \
+    --user-settings '{
+    "CodeEditorAppSettings": {
+      "LifecycleConfigArns":
+        ["<lifecycle-configuration-arn-list>"]
+      }
+    }'
+    ```
+    where:
+   - `<domain-id>`: Domain ID of your SageMaker domain.
+   - `<user-profile-name>`: User profile name associated to your domain.
+   - `<lifecycle-configuration-arn-list>`: The ARN (Amazon Resource Name) of your lifecycle configuration.
