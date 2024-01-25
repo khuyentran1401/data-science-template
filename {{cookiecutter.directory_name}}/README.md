@@ -1,13 +1,5 @@
 # {{cookiecutter.directory_name}}
 
-# Step-by-step to use this template
-
-## Login AWS SageMaker
-
-1. Login to https://console.aws.amazon.com/
-2. Amazon SageMaker -> Studio -> Code Editor
-3. Create a new Code Editor Space
-
 ## Set up the environment
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 2. Set up the environment:
