@@ -24,6 +24,8 @@ The `aws-sagemaker` branch provides a directory structure to work with the Amazo
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 
+Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html) is adopted as your the IDE environment.
+
 ## Project Structure
 ```bash
 .
