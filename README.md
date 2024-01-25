@@ -94,7 +94,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 1. On the left-side menu: Admin configuration -> Lifecycle configurations -> Code Editor tab -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
 8. On the AWS web browser, open the cloud shell at the bottom left corner and [run](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor-use-lifecycle-configurations.html#code-editor-use-lifecycle-configurations-studio-create)
     ```sh
-        aws sagemaker update-user-profile \
+    aws sagemaker update-user-profile \
     --domain-id <domain-id> \
     --user-profile-name <user-profile-name> \
     --user-settings '{
