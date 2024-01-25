@@ -58,17 +58,12 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
 
 ## How to use this project
 
-Install Cookiecutter:
-```bash
-pip install cookiecutter
-```
-
-Create a project based on the template:
-```bash
-cookiecutter https://github.com/khuyentran1401/data-science-template --checkout dvc-poetry
-```
-
-Resources for a detailed explanation of this template:
-- [Article](https://mathdatasimplified.com/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
-- [Video](https://youtu.be/TzvcPi3nsdw)
+1. Install Cookiecutter:
+    ```bash
+    pip install cookiecutter
+    ```
+1. Create a project based on the template:
+    ```bash
+    cookiecutter https://github.com/khuyentran1401/data-science-template --checkout aws-sagemaker
+    ```
 
