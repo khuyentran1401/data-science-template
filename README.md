@@ -27,35 +27,36 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
 ## Project Structure
 ```bash
 .
-├── config                      
-│   ├── main.yaml                   # Main configuration file
-│   ├── model                       # Configurations for training model
-│   │   ├── model1.yaml             # First variation of parameters to train model
-│   │   └── model2.yaml             # Second variation of parameters to train model
-│   └── process                     # Configurations for processing data
-│       ├── process1.yaml           # First variation of parameters to process data
-│       └── process2.yaml           # Second variation of parameters to process data
-├── data            
-│   ├── final                       # data after training the model
-│   ├── processed                   # data after processing
-│   ├── raw                         # raw data
-│   └── raw.dvc                     # DVC file of data/raw
-├── docs                            # documentation for your project
-├── .gitignore                      # ignore files that cannot commit to Git
-├── Makefile                        # store useful commands to set up the environment
-├── models                          # store models
-├── notebooks                       # store notebooks
-├── .pre-commit-config.yaml         # configurations for pre-commit
-├── pyproject.toml                  # dependencies for poetry
-├── README.md                       # describe your project
-├── src                             # store source code
-│   ├── __init__.py                 # make src a Python module 
-│   ├── process.py                  # process data before training model
-│   └── train_model.py              # train model
-└── tests                           # store tests
-    ├── __init__.py                 # make tests a Python module 
-    ├── test_process.py             # test functions for process.py
-    └── test_train_model.py         # test functions for train_model.py
+├── config
+│   ├── main.yaml               # Main configuration file
+│   ├── model                   # Configurations for training model
+│   │   ├── model1.yaml         # First variation of parameters to train model
+│   │   └── model2.yaml         # Second variation of parameters to train model
+│   ├── process                 # Configurations for processing data
+│   │   ├── process1.yaml       # First variation of parameters to process data
+│   │   └── process2.yaml       # Second variation of parameters to process data
+│   └── sagemaker_lifecycle.sh  # SageMaker lifecycle config file
+├── data                        
+│   ├── final                   # Data after training the model
+│   ├── processed               # Data after processing
+│   ├── raw                     # Raw data
+│   └── raw.dvc                 # DVC file of data/raw
+├── docs                        # Documentation for your project
+├── Makefile                    # Store useful commands to set up the environment
+├── .gitignore                  # Ignore files that cannot commit to Git  
+├── models                      # Store models
+├── notebooks                   # Store notebooks
+├── .pre-commit-config.yaml     # Configurations for pre-commit
+├── pyproject.toml              # Dependencies for poetry
+├── README.md                   # Describe your project
+├── src                         # Store source code
+│   ├── __init__.py             # Make src a Python module 
+│   ├── process.py              # Process data before training model
+│   └── train_model.py          # Train model
+└── tests                       # Store tests
+    ├── __init__.py             # Make tests a Python module 
+    ├── test_process.py         # Test functions for process.py
+    └── test_train_model.py     # Test functions for train_model.py
 ```
 
 ## How to use this project
