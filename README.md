@@ -13,7 +13,7 @@ The templates are organized in different branches, where each template is expect
 
 ## About this approach
 
-The `aws-sagemaker` branch provides to you a directory structure to work with the Amazon SageMaker, a end-to-end cloud-based ML service offered by Amazon Web Sercevies (AWS). The following tools are expected to be used:
+The `aws-sagemaker` branch provides to you a directory structure to work with the Amazon SageMaker, an end-to-end cloud-based ML service offered by Amazon Web Sercevies (AWS). The following tools are expected to be used:
 
 | Package management | Config file manager | Data version control |
 |   ---               |        ---          |     ---              |
