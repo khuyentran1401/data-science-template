@@ -67,7 +67,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 
 1. Install Cookiecutter:
     ```bash
-    pip install cookiecutter
+    pipx install cookiecutter # or pip
     ```
 1. Create a project based on the template:
     ```bash
