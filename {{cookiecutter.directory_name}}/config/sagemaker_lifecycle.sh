@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Unix shell script to config the AWS SageMaker lifecycle
+# Paste it as a new lifecycle script to config your Code Editor space
+
 # config git
 git config --global user.email "{{ cookiecutter.github_email }}"
 git config --global user.name "{{ cookiecutter.your_github_repo.split('/')[3] }}"
