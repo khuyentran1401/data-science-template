@@ -20,4 +20,4 @@ pip install poetry
 sudo sed -i '$a export PATH="/home/sagemaker-user/.local/bin${PATH:+:${PATH}}"' /etc/bash.bashrc
 source /etc/bash.bashrc
 # clone the repo
-git clone -C /home/sagemaker-user clone {{ cookiecutter.your_github_repo }}
+git -C /home/sagemaker-user clone {{ cookiecutter.your_github_repo }}
