@@ -85,7 +85,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 1. Login on [AWS console](https://console.aws.amazon.com/)
 2. Services -> Amazon SageMaker
 3. On the left-side menu: Studio -> Create a SageMaker domain -> Quick setup -> setup
-5. On the left-side menu: Admin configuration -> Domains -> Add user -> Follow the default configuration
+5. On the left-side menu: Admin configuration -> Domains -> Add user -> Follow the default settings
 6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
 7. Applications -> Code Editor -> Create Code Editor space -> Name your Code Editor space
 
