@@ -77,4 +77,10 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
     git push origin main
     ```
 
+### AWS SageMaker initial setup
+
+1. Login on [AWS console](https://console.aws.amazon.com/)
+2. Services -> Amazon SageMaker
+3. On the left-side menu: Studio -> Create a SageMaker domain -> Quick setup -> setup
+4. On the left-side menu:
     
