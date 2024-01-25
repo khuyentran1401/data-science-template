@@ -110,4 +110,4 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
    - `<lifecycle-configuration-arn-list>`: The ARN (Amazon Resource Name) of your lifecycle configuration.
 6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
 7. Applications -> Code Editor -> Your Code Editor space -> Lifecycle configuration -> Select your lifecycle script
-8. Run Space
+8. Run Space (wait a moment)
