@@ -2,7 +2,6 @@
     "directory_name": "project-name",
     "author_name": "Your Name",
     "your_github_repo": "https://github.com/username/repo",
-    "github_username": "{{ cookiecutter.your_github_repo.split('/')[3] }}",
     "github_email": "{{ cookiecutter.author_name.lower().replace(' ', '_') }}@email.com",
     "compatible_python_versions": "^3.8"
 }
