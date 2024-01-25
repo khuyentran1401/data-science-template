@@ -6,7 +6,8 @@ authors = ["{{ cookiecutter.author_name }}"]
 
 [tool.poetry.dependencies]
 python = "{{ cookiecutter.compatible_python_versions }}"
-dvc = "^2.10.0"
+sagemaker = "^2.204.0"
+boto3 = "^1.34.26"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
 ipykernel = "^6.28.0"
