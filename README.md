@@ -83,5 +83,5 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
 1. Login on [AWS console](https://console.aws.amazon.com/)
 2. Services -> Amazon SageMaker
 3. On the left-side menu: Studio -> Create a SageMaker domain -> Quick setup -> setup
-4. On the left-side menu:
+4. On the left-side menu: Admin configuration -> Lifecycle configurations -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
     
