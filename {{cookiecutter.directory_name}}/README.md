@@ -1,5 +1,7 @@
 # {{cookiecutter.directory_name}}
 
+# Step-by-step to use this template
+
 ## Login AWS SageMaker
 
 1. Login to https://console.aws.amazon.com/
