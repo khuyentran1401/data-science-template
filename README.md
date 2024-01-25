@@ -1,6 +1,6 @@
 [![View article](https://img.shields.io/badge/Data_Science_Simplified-View_article-blue)](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/) [![View on YouTube](https://img.shields.io/badge/YouTube-Watch%20on%20Youtube-red?logo=youtube)](https://youtu.be/TzvcPi3nsdw) 
 
-# Directory structure template for Data Science projects
+# Directory templates for Data Science projects
 
 ## Why?
 It is important to structure your data science project based on a certain standard so that your teammates can easily maintain and modify your project.
