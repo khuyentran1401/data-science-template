@@ -1,12 +1,15 @@
 [![View article](https://img.shields.io/badge/Data_Science_Simplified-View_article-blue)](https://mathdatasimplified.com/2023/06/17/how-to-structure-a-data-science-project-for-readability-and-transparency-2/) [![View on YouTube](https://img.shields.io/badge/YouTube-Watch%20on%20Youtube-red?logo=youtube)](https://youtu.be/TzvcPi3nsdw) 
 
-# Data Science Cookie Cutter
+# Directory structure template for Data Science projects
 
-**Note**: _This template uses poetry. If you prefer using pip, go to the [dvc-pip](https://github.com/khuyentran1401/data-science-template/tree/dvc-pip) branch instead._
 ## Why?
 It is important to structure your data science project based on a certain standard so that your teammates can easily maintain and modify your project.
 
 This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.
+
+## How are the templates organized?
+
+The templates are organized in different branches, where each template is expected to be used along with a pre-determined set of tools. Depending on your approach (e.g., whether you want to use a cloud-based or on-premise ML project), you might want to use one template over others. In any case, the directory structure should not vary drastically.
 
 ## About this approach
 
