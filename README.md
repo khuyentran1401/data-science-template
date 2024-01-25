@@ -74,6 +74,7 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
     ```bash
     git add -A
     git commit -m 'init my data science template'
+    git push origin main
     ```
 
     
