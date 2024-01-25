@@ -16,7 +16,7 @@ The templates are organized in different branches, where each template is expect
 The `aws-sagemaker` branch provides to you a directory structure to work with the Amazon SageMaker, an end-to-end cloud-based ML framework offered by Amazon Web Services (AWS). The following tools are expected to be used:
 
 | Functionality  | Tool | Links |
-|   ---               |        ---   |     ---   | --- |
+|   ---               |        ---   |     ---   |
 | Package management |   Poetry | [🔗](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies) [🔗](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f) |
 | Config file manager | Hydra | [🔗](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead) [🔗](https://hydra.cc/) |
 | Data version control | Amazon S3 | [🔗](https://aws.amazon.com/s3) |
