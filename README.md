@@ -92,8 +92,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 ### Create a lifecycle startup script
 
 1. On the left-side menu: Admin configuration -> Lifecycle configurations -> Code Editor tab -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
-8. On the AWS web broswer, open the cloud shell at the bottom left corner.
-9. [Run](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor-use-lifecycle-configurations.html#code-editor-use-lifecycle-configurations-studio-create)
+8. On the AWS web broswer, open the cloud shell at the bottom left corner and [run](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor-use-lifecycle-configurations.html#code-editor-use-lifecycle-configurations-studio-create)
     ```sh
         aws sagemaker update-user-profile \
     --domain-id <domain-id> \
@@ -109,3 +108,6 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
    - `<domain-id>`: Domain ID of your SageMaker domain.
    - `<user-profile-name>`: User profile name associated to your domain.
    - `<lifecycle-configuration-arn-list>`: The ARN (Amazon Resource Name) of your lifecycle configuration.
+6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
+7. Applications -> Code Editor -> Your Code Editor space -> Lifecycle configuration -> Select your lifecycle script
+8. Run Space
