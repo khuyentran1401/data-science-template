@@ -6,13 +6,17 @@
 ## Why?
 It is important to structure your data science project based on a certain standard so that your teammates can easily maintain and modify your project.
 
-This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.  
+This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.
 
-## Tools used in this project
-* [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies/)
-* [hydra](https://hydra.cc/): Manage configuration files - [article](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
+## About this approach
+
+The `aws-sagemaker` branch provides to you a directory structure to work with the Amazon SageMaker, a end-to-end cloud-based ML service offered by Amazon Web Sercevies (AWS). The following tools are expected to be used:
+
+| Package management | Config file manager | Data version control |
+|   ---               |        ---          |     ---              |
+|   [Poetry](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies)        |       [Hydra](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)         |   [Amazon S3](https://aws.amazon.com/s3/)          |
+
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
-* [DVC](https://dvc.org/): Data version control - [article](https://mathdatasimplified.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-2/)
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 
 ## Project Structure
