@@ -58,14 +58,3 @@ The `aws-sagemaker` branch provides to you a directory structure to work with th
     └── test_train_model.py         # test functions for train_model.py
 ```
 
-## How to use this project
-
-1. Install Cookiecutter:
-    ```bash
-    pip install cookiecutter
-    ```
-1. Create a project based on the template:
-    ```bash
-    cookiecutter https://github.com/khuyentran1401/data-science-template --checkout aws-sagemaker
-    ```
-
