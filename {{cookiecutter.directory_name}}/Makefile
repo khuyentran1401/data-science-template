@@ -4,7 +4,7 @@ dependencies:
 	@echo "Initializing Git..."
 	git init
 	@echo "Installing dependencies..."
-	poetry install
+	poetry install --no-root
 	poetry run pre-commit install
 
 env: dependencies
