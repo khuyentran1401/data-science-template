@@ -9,11 +9,11 @@ python = "{{ cookiecutter.compatible_python_versions }}"
 dvc = "^2.10.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
-ipykernel = "^6.28.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 pre-commit = "^2.17.0"
+ipykernel = "^6.28.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
