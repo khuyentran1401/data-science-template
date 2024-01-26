@@ -5,7 +5,7 @@
 
 # config git
 git config --global user.email "{{ cookiecutter.github_email }}"
-git config --global user.name "{{ cookiecutter.your_github_repo.split('/')[3] }}"
+git config --global user.name "{{ cookiecutter.__username }}"
 git config --global credential.helper cache
 git config --global credential.helper "cache --timeout=86400"
 # install vanilla python interpreter
