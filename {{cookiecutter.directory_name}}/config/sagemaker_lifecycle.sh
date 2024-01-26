@@ -14,6 +14,6 @@ sudo apt install -y python3
 # install poetry
 pip install poetry
 # add user ~/.local/bin to $PATH
-echo '$a export PATH="/home/sagemaker-user/.local/bin${PATH:+:${PATH}}"' >> /home/sagemaker-user/.bashrc
+echo 'export PATH="/home/sagemaker-user/.local/bin${PATH:+:${PATH}}"' >> /home/sagemaker-user/.bashrc
 # clone the repo
 git -C /home/sagemaker-user clone {{ cookiecutter.your_github_repo }}
