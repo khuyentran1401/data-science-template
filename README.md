@@ -119,4 +119,4 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
     ```sh
     poetry install
     ```
-3. Work on your project :)
+3. Work on your project by using the AWS SageMaker environment :) For more info, see the [Amazon SageMaker manual](https://aws.amazon.com/sagemaker/).
