@@ -21,8 +21,10 @@ The `aws-sagemaker` branch provides a directory structure to work with the Amazo
 | Config file manager | Hydra | [🔗](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead) [🔗](https://hydra.cc/) |
 | Data version control | Amazon S3 | [🔗](https://aws.amazon.com/s3) |
 
+<!---
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
+--->
 
 Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html) is adopted as your the IDE environment.
 
