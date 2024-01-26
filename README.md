@@ -70,7 +70,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
     ```bash
     pipx install cookiecutter # or pip
     ```
-1. Create a project based on the template on yout local machine:
+1. Create a project based on the template on your local machine:
     ```bash
     cookiecutter https://github.com/khuyentran1401/data-science-template --checkout aws-sagemaker
     ```
