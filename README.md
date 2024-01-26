@@ -113,7 +113,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 7. Applications -> Code Editor -> Your Code Editor space -> Lifecycle configuration -> Select your lifecycle script
 8. Run Space (wait a moment).
 
-In the end, you should have the final web-based Code Editor with your Data Science repository cloned `/home/sagemaker-user`
+In the end, you should have the final web-based Code Editor with your Data Science repository cloned into `/home/sagemaker-user`
 ![image](https://github.com/tapyu/to-rm-data-science-template/assets/22801918/bb632ac6-39f0-4d96-9b61-dfff954270a0)
 
 ### Setup `poetry`
