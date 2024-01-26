@@ -1,8 +1,10 @@
 {
+    "_extensions": ["local_extensions.GithubExtension"],
     "directory_name": "project-name",
     "author_name": "Your Name",
     "your_github_repo": "https://github.com/username/repo",
     "__username": "{{ cookiecutter.your_github_repo.split('/')[3] }}",
     "github_email": "{{ cookiecutter.author_name.lower().replace(' ', '_') }}@email.com",
-    "compatible_python_versions": "^3.8"
+    "compatible_python_versions": "^3.8",
+    "__is_404": "{{ cookiecutter.your_github_repo|is_404 }}"
 }
