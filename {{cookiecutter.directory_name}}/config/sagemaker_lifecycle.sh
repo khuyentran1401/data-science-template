@@ -8,6 +8,9 @@ git config --global user.email "{{ cookiecutter.github_email }}"
 git config --global user.name "{{ cookiecutter.__username }}"
 git config --global credential.helper cache
 git config --global credential.helper "cache --timeout=86400"
+# install /usr/bin/python3 (used by poetry)
+sudo apt update
+sudo apt install python3
 # install poetry
 pip install poetry
 # add user ~/.local/bin to $PATH
