@@ -64,6 +64,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
 
 ## Setting up this project
 
+<!--
 ### Initial setup
 
 1. Install Cookiecutter:
@@ -80,7 +81,7 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
     git commit -m 'init my data science template'
     git push origin main
     ```
-
+-->
 ### AWS SageMaker initial setup
 
 1. Login on [AWS console](https://console.aws.amazon.com/)
