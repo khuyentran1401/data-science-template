@@ -1,13 +1,14 @@
-from cookiecutter.main import cookiecutter
 import questionary
+import json
 
-def get_questions():
+def get_questions() -> questionary.Form:
     """
     Return the set of questions that must be send to the user.
     """
     questions = questionary.form(
         project_name = questionary.text("Project name:"),
         author_name = questionary.text("Author name:"),
+        compatible_python_versions = questionary.text("Pyhton version:", default="^3.8"),
         dep_manager = questionary.select(
             "Select dependency manager:",
             choices=["pip", "poetry"],
@@ -17,12 +18,15 @@ def get_questions():
 
     return questions
 
+def rewrite_cookiecutter_json(answers) -> None:
+    """
+    Rewrite
+    """
+    with open("cookiecutter.json", "w") as json_file:
+        json.dump(answers, json_file, indent=4)
+
 if __name__ == "__main__":
     questions = get_questions()
     answers = questions.ask()
-    # Run Cookiecutter with the customized context
-    cookiecutter(
-        'https://github.com/tapyu/to-rm-data-science-template',
-        no_input=True,  # Do not use cookiecutter prompt for input. Instead, use the provided context
-        extra_context={"cookiecutter": answers}
-    )
+    answers["directory_name"] = answers["project_name"].replace(' ','-').lower()
+    rewrite_cookiecutter_json(answers)
