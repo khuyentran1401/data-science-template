@@ -4,6 +4,7 @@
     "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "author_name": "Your Name",
     "dependency_manager": ["pip", "poetry"],
+    "data_version_control": ["yes", "no"],
     "__dep_filename": "{{ cookiecutter.dependency_manager|dep_filename }}",
     "compatible_python_versions": "^3.8"
 }
