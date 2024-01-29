@@ -1,3 +1,13 @@
+{%- if cookiecutter.dependency_manager == "pip" -%}
+dvc>=2.10.0
+hydra-core>=1.1.1
+pdoc3>=0.10.0
+notebook>=6.4.10
+pytest>=6.2.5
+pre-commit>=2.17.0
+ipykernel>=6.28.0
+
+{% elif cookiecutter.dependency_manager == "poetry" %}
 [tool.poetry]
 name = "{{ cookiecutter.directory_name }}"
 version = "0.1.0"
@@ -6,15 +16,14 @@ authors = ["{{ cookiecutter.author_name }}"]
 
 [tool.poetry.dependencies]
 python = "{{ cookiecutter.compatible_python_versions }}"
-sagemaker = "^2.204.0"
-boto3 = "^1.34.26"
+dvc = "^2.10.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
-ipykernel = "^6.28.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 pre-commit = "^2.17.0"
+ipykernel = "^6.28.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -54,3 +63,5 @@ line-length = 88
 
 [tool.ruff.mccabe]
 max-complexity = 10
+
+{% endif %}
