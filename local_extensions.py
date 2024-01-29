@@ -1,12 +1,15 @@
 from jinja2.ext import Extension
 
-def get_pkg_dependency_filename(v) -> str:
+def _get_pkg_dependency_filename(v) -> str:
     if v == "pip":
         return "requirements.txt"
     elif v == "poetry":
         return "pyproject.toml"
 
-class GithubExtension(Extension):
+class Jinja2Extension(Extension):
+    """
+    Adds new filters to the Jinja2 environment in which CookieCutter runs.
+    """
     def __init__(self, environment):
-        super(GithubExtension, self).__init__(environment)
-        environment.filters['dep_filename'] = lambda v: get_pkg_dependency_filename(v)
+        super(Jinja2Extension, self).__init__(environment)
+        environment.filters['dep_filename'] = _get_pkg_dependency_filename

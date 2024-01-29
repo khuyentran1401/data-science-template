@@ -1,5 +1,5 @@
 {
-    "_extensions": ["local_extensions.GithubExtension"],
+    "_extensions": ["local_extensions.Jinja2Extension"],
     "project_name": "Project Name",
     "__directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "author_name": "Your Name",
