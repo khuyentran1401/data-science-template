@@ -9,7 +9,7 @@ ipykernel>=6.28.0
 
 {% elif cookiecutter.dependency_manager == "poetry" %}
 [tool.poetry]
-name = "{{ cookiecutter.directory_name }}"
+name = "{{ cookiecutter.__directory_name }}"
 version = "0.1.0"
 description = ""
 authors = ["{{ cookiecutter.author_name }}"]

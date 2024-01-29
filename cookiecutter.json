@@ -1,7 +1,7 @@
 {
     "_extensions": ["local_extensions.GithubExtension"],
     "project_name": "Project Name",
-    "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "__directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "author_name": "Your Name",
     "dependency_manager": ["pip", "poetry"],
     "data_version_control": ["yes", "no"],
