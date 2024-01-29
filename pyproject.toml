@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "data-science-template"
+version = "0.1.0"
+description = "Template for a data science project."
+authors = ["Khuyen Tran <khuyentran1476@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+questionary = "^2.0.1"
+cookiecutter = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
