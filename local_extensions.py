@@ -1,10 +1,11 @@
 from jinja2.ext import Extension
 
 def _get_pkg_dependency_filename(v) -> str:
-    if v == "pip":
-        return "requirements.txt"
-    elif v == "poetry":
-        return "pyproject.toml"
+    out = {
+        "pip": "requirements.txt",
+        "poetry": "pyproject.toml"
+    }
+    return out[v]
 
 class Jinja2Extension(Extension):
     """
