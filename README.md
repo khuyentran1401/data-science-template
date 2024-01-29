@@ -7,13 +7,7 @@ It is important to structure your data science project based on a certain standa
 
 This repository provides a template that incorporates best practices to create a maintainable and reproducible data science project.
 
-## How are the templates organized?
-
-The templates are organized in different branches, where each template is expected to be used along with a pre-determined set of tools. Depending on your approach (e.g., whether you want to use a cloud-based or on-premise ML project), you might want to use one template over others. In any case, the directory structure should not vary drastically.
-
-## About this approach
-
-The `aws-sagemaker` branch provides a directory structure to work with the Amazon SageMaker, an end-to-end cloud-based ML framework offered by Amazon Web Services (AWS). The following tools are expected to be used:
+## Tools
 
 | Functionality  | Tool | Links |
 |   ---               |        ---   |     ---   |
@@ -25,8 +19,6 @@ The `aws-sagemaker` branch provides a directory structure to work with the Amazo
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 --->
-
-Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html) is adopted as your the IDE environment.
 
 ## Project Structure
 ```bash
@@ -61,67 +53,3 @@ Also, the [Code Editor](https://docs.aws.amazon.com/sagemaker/latest/dg/code-edi
     ├── test_process.py         # Test functions for process.py
     └── test_train_model.py     # Test functions for train_model.py
 ```
-
-## Setting up this project
-
-<!--
-### Initial setup
-
-1. Install Cookiecutter:
-    ```bash
-    pipx install cookiecutter # or pip
-    ```
-1. Create a project based on the template on your local machine:
-    ```bash
-    cookiecutter https://github.com/khuyentran1401/data-science-template --checkout aws-sagemaker
-    ```
-1. Push an initial commit to your newly created Data Science project
-    ```bash
-    git add -A
-    git commit -m 'init my data science template'
-    git push origin main
-    ```
--->
-### AWS SageMaker initial setup
-
-1. Login on [AWS console](https://console.aws.amazon.com/)
-2. Services -> Amazon SageMaker
-3. On the left-side menu: Studio -> Create a SageMaker domain -> Quick setup -> setup
-5. On the left-side menu: Admin configuration -> Domains -> Add user -> Follow the default settings
-6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
-7. Applications -> Code Editor -> Create Code Editor space -> Name your Code Editor space
-
-### Create a lifecycle startup script
-
-1. On the left-side menu: Admin configuration -> Lifecycle configurations -> Code Editor tab -> Create configuration -> Paste the script on `./config/sagemaker_lifecycle.sh`
-8. On the AWS web browser, open the cloud shell at the bottom left corner and [run](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor-use-lifecycle-configurations.html#code-editor-use-lifecycle-configurations-studio-create)
-    ```sh
-    aws sagemaker update-user-profile \
-    --domain-id <domain-id> \
-    --user-profile-name <user-profile-name> \
-    --user-settings '{
-    "CodeEditorAppSettings": {
-      "LifecycleConfigArns":
-        ["<lifecycle-configuration-arn-list>"]
-      }
-    }'
-    ```
-    where:
-   - `<domain-id>`: Domain ID of your SageMaker domain.
-   - `<user-profile-name>`: User profile name associated to your domain.
-   - `<lifecycle-configuration-arn-list>`: The ARN (Amazon Resource Name) of your lifecycle configuration.
-6. On the left-side menu: Studio -> Get started -> Select your profile -> Open Studio
-7. Applications -> Code Editor -> Your Code Editor space -> Lifecycle configuration -> Select your lifecycle script
-8. Run Space (wait a moment).
-
-In the end, you should have the final web-based Code Editor with your Data Science repository cloned into `/home/sagemaker-user`
-![image](https://github.com/tapyu/to-rm-data-science-template/assets/22801918/bb632ac6-39f0-4d96-9b61-dfff954270a0)
-
-### Setup `poetry`
-
-1. Open the Code Editor inside your repository.
-2. Open the terminal and run
-    ```sh
-    poetry install
-    ```
-3. Work on your project with the AWS SageMaker ecosystem :) For more info, see the [Amazon SageMaker manual](https://aws.amazon.com/sagemaker/).
