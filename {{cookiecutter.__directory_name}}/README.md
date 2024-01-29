@@ -1,4 +1,4 @@
-# {{cookiecutter.directory_name}}
+# {{cookiecutter.__directory_name}}
 
 ## Set up the environment
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
