@@ -5,7 +5,7 @@ deps:
 	git init
 	{% if cookiecutter.dependency_manager == "poetry" %}
 	@echo "Installing dependencies..."
-	poetry install
+	poetry install --no-root
 	poetry run pre-commit install
 	{% else %}
 	@echo "Installing dependencies..."
