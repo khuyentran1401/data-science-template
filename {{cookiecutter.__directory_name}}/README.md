@@ -26,24 +26,24 @@
 ├── data            
 │   ├── final                       # data after training the model
 │   ├── processed                   # data after processing
-{% if cookiecutter.data_version_control == "dvc" %}
+{%- if cookiecutter.data_version_control == "dvc" -%}
 │   ├── raw                         # raw data
 │   └── raw.dvc                     # DVC file of data/raw
-{% elif cookiecutter.data_version_control == "none" %}
+{%- elif cookiecutter.data_version_control == "none" -%}
 │   └── raw                         # raw data
-{% endif %}
+{%- endif -%}
 ├── docs                            # documentation for your project
 ├── dvc.yaml                        # DVC pipeline
 ├── .gitignore                      # ignore files that cannot commit to Git
 ├── Makefile                        # store useful commands to set up the environment
 ├── models                          # store models
 ├── notebooks                       # store notebooks
-{% if cookiecutter.dependency_manager == "pip" %}
+{%- if cookiecutter.dependency_manager == "pip" -%}
 ├── pyproject.toml                  # Configure black
-{% elif cookiecutter.dependency_manager == "poetry" %}
+{%- elif cookiecutter.dependency_manager == "poetry" -%}
 ├── .pre-commit-config.yaml         # configurations for pre-commit
 ├── pyproject.toml                  # dependencies for poetry
-{% endif %}
+{%- endif -%}
 ├── README.md                       # describe your project
 ├── src                             # store source code
 │   ├── __init__.py                 # make src a Python module 
