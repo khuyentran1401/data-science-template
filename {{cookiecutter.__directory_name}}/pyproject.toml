@@ -1,4 +1,4 @@
-{% if cookiecutter.dependency_manager == "poetry" %}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 [tool.poetry]
 name = "{{ cookiecutter.__directory_name }}"
 version = "0.1.0"
