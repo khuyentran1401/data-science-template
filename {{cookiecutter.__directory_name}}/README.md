@@ -61,7 +61,7 @@
 
 {% if cookiecutter.dependency_manager == "poetry" %}
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
-1. Activate the virtual environment:
+2. Activate the virtual environment:
 ```bash
 poetry shell
 ```
@@ -70,17 +70,18 @@ poetry shell
 ```bash
 python3 -m venv venv
 ```
-1. Activate the virtual environment:
-For Linux/MacOS:
+2. Activate the virtual environment:
+
+- For Linux/MacOS:
 ```bash
 source venv/bin/activate
 ```
-For Command Prompt:
+- For Command Prompt:
 ```bash
 .\venv\Scripts\activate
 ```
 {% endif %}
-1. Install dependencies:
+3. Install all dependencies for this repository:
 ```bash
 make deps 
 ```
