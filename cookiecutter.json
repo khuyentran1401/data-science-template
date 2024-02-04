@@ -1,5 +1,10 @@
 {
-    "directory_name": "project-name",
+    "_extensions": ["local_extensions.Jinja2Extension"],
+    "project_name": "Project Name",
+    "__directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "author_name": "Your Name",
+    "dependency_manager": ["pip", "poetry"],
+    "use_data_version_control": ["yes", "no"],
+    "__dep_filename": "{{ cookiecutter.dependency_manager|dep_filename }}",
     "compatible_python_versions": "^3.8"
 }
