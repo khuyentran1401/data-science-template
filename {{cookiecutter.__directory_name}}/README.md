@@ -58,13 +58,14 @@
 ```
 
 ## Set up the environment
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+
+{% if cookiecutter.dependency_manager == "poetry" %}
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 1. Activate the virtual environment:
 ```bash
 poetry shell
 ```
-{%- else -%}
+{% else %}
 1. Create the virtual environment:
 ```bash
 python3 -m venv venv
@@ -78,24 +79,24 @@ For Command Prompt:
 ```bash
 .\venv\Scripts\activate
 ```
-{%- endif -%}
+{% endif %}
 1. Install dependencies:
 ```bash
 make deps 
 ```
 
 To install a new package, run:
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{% if cookiecutter.dependency_manager == "poetry" %}
 ```bash
 poetry add <package-name>
 ```
-{%- else -%}
+{% else %}
 ```bash
 pip install <package-name>
 ```
-{%- endif -%}
+{% endif %}
 
-{%- if cookiecutter.data_version_control == "dvc" -%}
+{% if cookiecutter.data_version_control == "dvc" %}
 ## Version your data
 To track changes to the "data" directory, type:
 ```bash
@@ -114,7 +115,7 @@ To push the data to remote storage, type:
 ```bash
 dvc push 
 ```
-{%- endif -%}
+{% endif %}
 
 ## Auto-generate API documentation
 
