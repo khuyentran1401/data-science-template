@@ -6,6 +6,7 @@
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 {% if cookiecutter.dependency_manager == "poetry" %}
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies/)
+{% endif %}
 {% if cookiecutter.data_version_control == "dvc" %}
 * [DVC](https://dvc.org/): Data version control - [article](https://mathdatasimplified.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-2/)
 {% endif %}
