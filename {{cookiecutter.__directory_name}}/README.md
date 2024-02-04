@@ -72,7 +72,7 @@ source venv/bin/activate
 {% endif %}
 3. Install all dependencies for this repository:
 ```bash
-make deps 
+make
 ```
 
 To install a new package, run:
