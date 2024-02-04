@@ -1,7 +1,7 @@
 import os
 
 def parse_dvc_settings():
-    if "{{ cookiecutter.use_data_version_control }}" == "no":
+    if "{{ cookiecutter.data_version_control }}" == "none":
         os.remove(os.path.join(".dvc", ".gitignore"))
         os.remove(os.path.join(".dvc", "config"))
         os.rmdir(".dvc")
