@@ -29,12 +29,12 @@
 ├── Makefile                        # store useful commands to set up the environment
 ├── models                          # store models
 ├── notebooks                       # store notebooks
-{%- if cookiecutter.dependency_manager == "pip" -%}
+{% if cookiecutter.dependency_manager == "pip" -%}
 ├── pyproject.toml                  # Configure black
-{%- elif cookiecutter.dependency_manager == "poetry" -%}
+{% elif cookiecutter.dependency_manager == "poetry" -%}
 ├── .pre-commit-config.yaml         # configurations for pre-commit
 ├── pyproject.toml                  # dependencies for poetry
-{%- endif -%}
+{%- endif %}
 ├── README.md                       # describe your project
 ├── src                             # store source code
 │   ├── __init__.py                 # make src a Python module 
