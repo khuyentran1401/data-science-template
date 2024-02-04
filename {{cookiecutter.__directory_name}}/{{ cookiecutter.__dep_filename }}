@@ -1,5 +1,4 @@
 {%- if cookiecutter.dependency_manager == "pip" -%}
-dvc>=2.10.0
 hydra-core>=1.1.1
 pdoc3>=0.10.0
 notebook>=6.4.10
@@ -16,7 +15,6 @@ authors = ["{{ cookiecutter.author_name }}"]
 
 [tool.poetry.dependencies]
 python = "{{ cookiecutter.compatible_python_versions }}"
-dvc = "^2.10.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
 

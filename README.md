@@ -12,7 +12,6 @@ This repository provides a template that incorporates best practices to create a
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies/)
-* [DVC](https://dvc.org/): Data version control - [article](https://mathdatasimplified.com/introduction-to-dvc-data-version-control-tool-for-machine-learning-projects-2/)
 
 ## How to use this project
 
