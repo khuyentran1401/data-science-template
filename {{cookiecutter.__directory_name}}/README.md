@@ -33,7 +33,9 @@
 │   └── raw                         # raw data
 {%- endif -%}
 ├── docs                            # documentation for your project
+{%- if cookiecutter.data_version_control == "dvc" -%}
 ├── dvc.yaml                        # DVC pipeline
+{%- endif -%}
 ├── .gitignore                      # ignore files that cannot commit to Git
 ├── Makefile                        # store useful commands to set up the environment
 ├── models                          # store models
