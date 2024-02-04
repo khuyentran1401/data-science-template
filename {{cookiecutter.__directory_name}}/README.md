@@ -28,7 +28,7 @@
 {% if cookiecutter.data_version_control == "dvc" %}
 │   ├── raw                         # raw data
 │   └── raw.dvc                     # DVC file of data/raw
-{% else %}
+{% elif cookiecutter.data_version_control == "none" %}
 │   └── raw                         # raw data
 {% endif %}
 ├── docs                            # documentation for your project
@@ -39,7 +39,7 @@
 ├── notebooks                       # store notebooks
 {% if cookiecutter.dependency_manager == "pip" %}
 ├── pyproject.toml                  # Configure black
-{% else %}
+{% elif cookiecutter.dependency_manager == "poetry" %}
 ├── .pre-commit-config.yaml         # configurations for pre-commit
 ├── pyproject.toml                  # dependencies for poetry
 {% endif %}
