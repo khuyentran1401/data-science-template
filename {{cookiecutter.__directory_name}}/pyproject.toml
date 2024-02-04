@@ -1,12 +1,4 @@
-{%- if cookiecutter.dependency_manager == "pip" -%}
-hydra-core>=1.1.1
-pdoc3>=0.10.0
-notebook>=6.4.10
-pytest>=6.2.5
-pre-commit>=2.17.0
-ipykernel>=6.28.0
-
-{% elif cookiecutter.dependency_manager == "poetry" %}
+{% if cookiecutter.dependency_manager == "poetry" %}
 [tool.poetry]
 name = "{{ cookiecutter.__directory_name }}"
 version = "0.1.0"
@@ -26,7 +18,7 @@ ipykernel = "^6.28.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
+{% endif %}
 [tool.ruff]
 ignore = ["E501"]
 select = ["B","C","E","F","W","B9", "I", "Q"]
@@ -61,5 +53,3 @@ line-length = 88
 
 [tool.ruff.mccabe]
 max-complexity = 10
-
-{% endif %}
