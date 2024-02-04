@@ -3,15 +3,15 @@
 deps: 
 	@echo "Initializing Git..."
 	git init
+	{% if cookiecutter.dependency_manager == "poetry" %}
 	@echo "Installing dependencies..."
-	{%- if cookiecutter.dependency_manager == "poetry" -%}
 	poetry install
 	poetry run pre-commit install
-	{%- else -%}
+	{% else %}
+	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 	pre-commit install
-	{%- endif -%}
-
+	{% endif %}
 tests:
 	pytest
 
