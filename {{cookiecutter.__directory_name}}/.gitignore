@@ -94,4 +94,6 @@ outputs
 
 # Data
 data/*/*
-!data/*/gitkeep
+
+# Notebooks
+notebooks/*
