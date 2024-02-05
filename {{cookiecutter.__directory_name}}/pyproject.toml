@@ -20,9 +20,6 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 {% endif %}
 [tool.ruff]
-ignore = ["E501"]
-select = ["B","C","E","F","W","B9", "I", "Q"]
-
 # Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
@@ -51,5 +48,9 @@ exclude = [
 # Same as Black.
 line-length = 88
 
-[tool.ruff.mccabe]
+[tool.ruff.lint]
+ignore = ["E501"]
+select = ["B","C","E","F","W","B9", "I", "Q"]
+
+[tool.ruff.lint.mccabe]
 max-complexity = 10
