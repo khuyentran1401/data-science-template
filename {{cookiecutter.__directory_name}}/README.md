@@ -86,6 +86,42 @@ pip install <package-name>
 ```
 {% endif %}
 
+## View and alter configurations
+To view the configurations associated with a Pythons script, run the following command:
+```bash
+python src/process.py --help
+```
+Output:
+```yaml
+process is powered by Hydra.
+
+== Configuration groups ==
+Compose your configuration from those groups (group=option)
+
+model: model1, model2
+process: process1, process2
+
+
+== Config ==
+Override anything in the config (foo.bar=value)
+
+process:
+  use_columns:
+  - col1
+  - col2
+model:
+  name: model1
+data:
+  raw: data/raw/sample.csv
+  processed: data/processed/processed.csv
+  final: data/final/final.csv
+```
+
+To alter the configurations associated with a Python script from the command line, run the following:
+```bash
+python src/process.py data.raw=sample2.csv
+```
+
 ## Auto-generate API documentation
 
 To auto-generate API document for your project, run:
