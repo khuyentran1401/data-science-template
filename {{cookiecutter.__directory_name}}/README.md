@@ -54,6 +54,19 @@
 ```bash
 poetry shell
 ```
+3. Install dependencies:
+- To install all dependencies from pyproject.toml, run:
+```bash
+poetry install
+```
+- To install only production dependencies, run:
+```bash
+poetry install --only main
+```
+- To install a new package, run:
+```bash
+poetry add <package-name>
+```
 {% else %}
 1. Create the virtual environment:
 ```bash
@@ -69,18 +82,16 @@ source venv/bin/activate
 ```bash
 .\venv\Scripts\activate
 ```
-{% endif %}
-3. Install all dependencies for this repository:
+3. Install dependencies:
+- To install all dependencies, run:
 ```bash
-make
+pip install -r requirements-dev.txt
 ```
-
-To install a new package, run:
-{% if cookiecutter.dependency_manager == "poetry" %}
+- To install only production dependencies, run:
 ```bash
-poetry add <package-name>
+pip install -r requirements.txt
 ```
-{% else %}
+- To install a new package, run:
 ```bash
 pip install <package-name>
 ```
