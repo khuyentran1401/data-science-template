@@ -9,7 +9,7 @@ deps:
 	poetry run pre-commit install
 	{% else %}
 	@echo "Installing dependencies..."
-	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 	pre-commit install
 	{% endif %}
 tests:
