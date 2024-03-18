@@ -3,20 +3,22 @@
 deps: 
 	@echo "Initializing Git..."
 	git init
-	{% if cookiecutter.dependency_manager == "poetry" %}
+	
 	@echo "Installing dependencies..."
 	poetry install --no-root
 	poetry run pre-commit install
-	{% else %}
-	@echo "Installing dependencies..."
-	pip install -r requirements-dev.txt
-	pre-commit install
-	{% endif %}
+	
 tests:
 	pytest
 
 docs:
-	@echo Save documentation to docs... 
-	pdoc src -o docs --force
+	@if [ ! -f "./docs/Makefile" ]; then \
+		@echo Initiating documentation; \
+		cd ./docs; sphinx-quickstart --no-sep --ext-autodoc --ext-doctest --ext-todo --ext-viewcode; \
+	fi
+	@echo Auto-generate API documentation... 
+	cd ./docs; pwd; sphinx-apidoc -o . ../src
+	@echo Generate html documentation...
+	cd ./docs; pwd; make clean html
 	@echo View API documentation... 
-	pdoc src --http localhost:8080	
+	cd ./docs/_build/html; pwd; python -m http.server
