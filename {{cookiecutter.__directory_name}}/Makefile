@@ -13,7 +13,7 @@ tests:
 
 docs:
 	@if [ ! -f "./docs/Makefile" ]; then \
-		@echo Initiating documentation...; \
+		echo Initiating documentation...; \
 		cd ./docs; sphinx-quickstart --no-sep --ext-autodoc --ext-doctest --ext-todo --ext-viewcode; \
 	fi
 	@echo Auto-generate API documentation... 
