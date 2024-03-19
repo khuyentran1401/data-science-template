@@ -13,12 +13,12 @@ tests:
 
 docs:
 	@if [ ! -f "./docs/Makefile" ]; then \
-		@echo Initiating documentation; \
+		@echo Initiating documentation...; \
 		cd ./docs; sphinx-quickstart --no-sep --ext-autodoc --ext-doctest --ext-todo --ext-viewcode; \
 	fi
 	@echo Auto-generate API documentation... 
-	cd ./docs; pwd; sphinx-apidoc -o . ../src
+	cd ./docs; sphinx-apidoc -o . ../src
 	@echo Generate html documentation...
-	cd ./docs; pwd; make clean html
+	cd ./docs; make clean html
 	@echo View API documentation... 
-	cd ./docs/_build/html; pwd; python -m http.server
+	cd ./docs/_build/html; python -m http.server
