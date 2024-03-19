@@ -2,7 +2,7 @@
 
 ## Tools used in this project
 * [hydra](https://hydra.cc/): Manage configuration files - [article](https://mathdatasimplified.com/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
-* [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
+* [sphinx](https://www.sphinx-doc.org/en/master/): Automatically create an API documentation for your project
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 {% if cookiecutter.dependency_manager == "poetry" %}
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies/)
@@ -13,37 +13,38 @@
 ```bash
 .
 ├── config                      
-│   ├── main.yaml                   # Main configuration file
-│   ├── model                       # Configurations for training model
-│   │   ├── model1.yaml             # First variation of parameters to train model
-│   │   └── model2.yaml             # Second variation of parameters to train model
-│   └── process                     # Configurations for processing data
-│       ├── process1.yaml           # First variation of parameters to process data
-│       └── process2.yaml           # Second variation of parameters to process data
+│   ├── main.yaml                         # Main configuration file
+│   ├── model                             # Configurations for training model
+│   │   ├── model1.yaml                   # First variation of parameters to train model
+│   │   └── model2.yaml                   # Second variation of parameters to train model
+│   └── process                           # Configurations for processing data
+│       ├── process1.yaml                 # First variation of parameters to process data
+│       └── process2.yaml                 # Second variation of parameters to process data
 ├── data            
-│   ├── final                       # data after training the model
-│   ├── processed                   # data after processing
-│   └── raw                         # raw data
-├── docs                            # documentation for your project
-├── .gitignore                      # ignore files that cannot commit to Git
-├── Makefile                        # store useful commands to set up the environment
-├── models                          # store models
-├── notebooks                       # store notebooks
+│   ├── final                             # data after training the model
+│   ├── processed                         # data after processing
+│   └── raw                               # raw data
+├── docs                                  # documentation for your project
+├── .gitignore                            # ignore files that cannot commit to Git
+├── Makefile                              # store useful commands to set up the environment
+├── models                                # store models
+├── notebooks                             # store notebooks
 {% if cookiecutter.dependency_manager == "pip" -%}
-├── pyproject.toml                  # Configure black
+├── pyproject.toml                        # Configure black
 {% elif cookiecutter.dependency_manager == "poetry" -%}
-├── .pre-commit-config.yaml         # configurations for pre-commit
-├── pyproject.toml                  # dependencies for poetry
+├── .pre-commit-config.yaml               # configurations for pre-commit
+├── pyproject.toml                        # dependencies for poetry
 {%- endif %}
-├── README.md                       # describe your project
-├── src                             # store source code
-│   ├── __init__.py                 # make src a Python module 
-│   ├── process.py                  # process data before training model
-│   └── train_model.py              # train model
-└── tests                           # store tests
-    ├── __init__.py                 # make tests a Python module 
-    ├── test_process.py             # test functions for process.py
-    └── test_train_model.py         # test functions for train_model.py
+├── README.md                             # describe your project
+├── src                                   # store source code
+│   └── {{cookiecutter.__directory_name}} # main module directory
+│       ├── __init__.py                   # make {{cookiecutter.__directory_name}} a Python module 
+│       ├── process.py                    # process data before training model
+│       └── train_model.py                # train model
+└── tests                                 # store tests
+    ├── __init__.py                       # make tests a Python module 
+    ├── test_process.py                   # test functions for process.py
+    └── test_train_model.py               # test functions for train_model.py
 ```
 
 ## Set up the environment
