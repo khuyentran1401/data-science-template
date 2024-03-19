@@ -9,10 +9,6 @@ authors = ["{{ cookiecutter.author_name }}"]
 python = "{{ cookiecutter.compatible_python_versions }}"
 hydra-core = "^1.1.1"
 
-[tool.poetry.dependencies]
-python = "{{ cookiecutter.compatible_python_versions }}"
-hydra-core = "^1.1.1"
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
 pre-commit = "^2.17.0"
