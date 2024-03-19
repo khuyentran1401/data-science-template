@@ -3,9 +3,7 @@
 # Data Science Cookie Cutter
 
 ## What is this?
-This repository is a template for a data science project. This is the project structure I frequently use for my data science project.
-
-It is based on khuyentran1401's cookiecutter [data science template](https://github.com/khuyentran1401/data-science-template/tree/main).
+This repository is a template for a data science project. It is based on khuyentran1401's cookiecutter [data science template](https://github.com/khuyentran1401/data-science-template/tree/main).
 
 Feel free to look at these resources for a detailed explanation of khuyentran1401's original template:
 - [Article](https://mathdatasimplified.com/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
