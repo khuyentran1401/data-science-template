@@ -39,7 +39,8 @@
 ├── src                             # store source code
 │   ├── __init__.py                 # make src a Python module 
 │   ├── process.py                  # process data before training model
-│   └── train_model.py              # train model
+│   ├── train_model.py              # train model
+│   └── utils.py                    # store helper functions
 └── tests                           # store tests
     ├── __init__.py                 # make tests a Python module 
     ├── test_process.py             # test functions for process.py
