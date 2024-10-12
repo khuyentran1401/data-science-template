@@ -37,7 +37,7 @@ The book will cover:
 - Deploying and monitoring machine learning models
 - And much more!
 
-Sign up to be notified when the book is available.
+Sign up now to receive the first 3 chapters for free! You'll also be notified when the full book becomes available.
 
 ## Other Resources:
 - [Article](https://codecut.ai/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
