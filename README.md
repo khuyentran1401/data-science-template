@@ -6,7 +6,7 @@
 This repository is a template for a data science project. It is based on khuyentran1401's cookiecutter [data science template](https://github.com/khuyentran1401/data-science-template/tree/main).
 
 Feel free to look at these resources for a detailed explanation of khuyentran1401's original template:
-- [Article](https://mathdatasimplified.com/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
+- [Article](https://codecut.ai/how-to-structure-a-data-science-project-for-readability-and-transparency-2/)
 - [Video](https://youtu.be/TzvcPi3nsdw)
 
 ## Why?
