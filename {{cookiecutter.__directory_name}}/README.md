@@ -6,6 +6,7 @@
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 {% if cookiecutter.dependency_manager == "poetry" %}
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/poetry-a-better-way-to-manage-python-dependencies/)
+* [Poetry Shell Plugin](https://github.com/python-poetry/poetry-plugin-shell): Open a shell with already activated poetry venv (bundled with poetry prior to 2.0.0)
 {% endif %}
 
 ## Project Structure

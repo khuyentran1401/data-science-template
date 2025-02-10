@@ -12,6 +12,7 @@ This repository provides a template that incorporates best practices to create a
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://codecut.ai/poetry-a-better-way-to-manage-python-dependencies/)
+* [Poetry Shell Plugin](https://github.com/python-poetry/poetry-plugin-shell): Open a shell with already activated poetry venv (bundled with poetry prior to 2.0.0)
 
 ## How to use this project
 
