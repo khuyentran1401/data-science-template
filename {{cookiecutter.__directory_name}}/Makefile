@@ -7,6 +7,7 @@ deps:
 	@echo "Installing dependencies..."
 	poetry install --no-root
 	poetry run pre-commit install
+	poetry self add poetry-plugin-shell
 	{% else %}
 	@echo "Installing dependencies..."
 	pip install -r requirements-dev.txt
