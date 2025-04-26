@@ -88,7 +88,6 @@ git push -u origin main
 ## Set up the environment
 
 {% if cookiecutter.dependency_manager == "poetry" %}
-
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 
 2. Activate the virtual environment:
@@ -121,14 +120,12 @@ poetry add <package-name>
 
 ```bash
 # Run directly with poetry
-poetry run python your_script.py
+poetry run python src/process.py
 
 # Or after activating the virtual environment
-python your_script.py
+python src/process.py
 ```
-
 {% elif cookiecutter.dependency_manager == "uv" %}
-
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 2. Install dependencies:
@@ -154,11 +151,9 @@ uv add <package-name>
 3. Run Python scripts:
 
 ```bash
-uv run your_script.py
+uv run src/process.py
 ```
-
 {% else %}
-
 1. Create the virtual environment:
 
 ```bash
@@ -203,9 +198,8 @@ pip install <package-name>
 
 ```bash
 # After activating the virtual environment
-python your_script.py
+python src/process.py
 ```
-
 {% endif %}
 
 ## Set up pre-commit hooks
@@ -239,46 +233,21 @@ Pre-commit will now run automatically on every commit. If any checks fail, the c
 
 ## View and alter configurations
 
-{% if cookiecutter.dependency_manager == "poetry" %}
-To view the configurations associated with a Python script, run:
+The project uses Hydra to manage configurations. You can view and modify these configurations from the command line.
 
+To view available configurations:
+
+{% if cookiecutter.dependency_manager == "poetry" %}
 ```bash
 poetry run python src/process.py --help
-
-To alter the configurations associated with a Python script:
-
-```bash
-# Run directly with poetry
-poetry run python src/process.py data.raw=sample2.csv
-
-# Or after activating the virtual environment with `poetry shell`
-python src/process.py data.raw=sample2.csv
 ```
 {% elif cookiecutter.dependency_manager == "uv" %}
-To view the configurations associated with a Python script, run:
-
 ```bash
 uv run src/process.py --help
 ```
-
-To alter the configurations associated with a Python script:
-
-```bash
-uv run src/process.py data.raw=sample2.csv
-```
 {% else %}
-To view the configurations associated with a Python script, run:
-
 ```bash
-# After activating the virtual environment
 python src/process.py --help
-```
-
-To alter the configurations associated with a Python script:
-
-```bash
-# After activating the virtual environment
-python src/process.py data.raw=sample2.csv
 ```
 {% endif %}
 
@@ -308,6 +277,31 @@ data:
   processed: data/processed/processed.csv
   final: data/final/final.csv
 ```
+
+To override configurations (for example, changing the input data file):
+
+{% if cookiecutter.dependency_manager == "poetry" %}
+```bash
+poetry run python src/process.py data.raw=sample2.csv
+```
+{% elif cookiecutter.dependency_manager == "uv" %}
+```bash
+uv run src/process.py data.raw=sample2.csv
+```
+{% else %}
+```bash
+python src/process.py data.raw=sample2.csv
+```
+{% endif %}
+
+Output:
+
+```
+Process data using sample2.csv
+Columns used: ['col1', 'col2']
+```
+
+You can override any configuration value shown in the help output. Multiple overrides can be combined in a single command. For more information about Hydra's configuration system, visit the [official documentation](https://hydra.cc/docs/intro/).
 
 ## Auto-generate API documentation
 
