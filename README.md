@@ -12,7 +12,8 @@ This repository provides a template that incorporates best practices to create a
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://codecut.ai/poetry-a-better-way-to-manage-python-dependencies/)
-* [Poetry Shell Plugin](https://github.com/python-poetry/poetry-plugin-shell): Open a shell with already activated poetry venv (bundled with poetry prior to 2.0.0)
+* [uv](https://github.com/astral-sh/uv): Ultra-fast Python package installer and resolver
+* [pip](https://pip.pypa.io/): Traditional Python package installer
 
 ## How to use this project
 
@@ -26,6 +27,11 @@ Create a project based on the template:
 cookiecutter https://github.com/khuyentran1401/data-science-template
 ```
 
+You will be prompted to choose your preferred dependency manager:
+- `poetry`: Modern Python package and dependency manager
+- `uv`: Ultra-fast Python package installer and resolver
+- `pip`: Traditional Python package installer
+
 ## Book: Production-Ready Data Science
 
 Want to learn more about building production-ready data science projects? Check out my upcoming book:
@@ -33,6 +39,7 @@ Want to learn more about building production-ready data science projects? Check 
 [Production Ready Data Science: From Prototyping to Production with Python](https://codecut.ai/production-ready-data/?utm_source=github&utm_medium=repository&utm_campaign=data_science_template)
 
 The book will cover:
+
 - Best practices for structuring data science projects
 - Tools and techniques for reproducible research 
 - Deploying and monitoring machine learning models
