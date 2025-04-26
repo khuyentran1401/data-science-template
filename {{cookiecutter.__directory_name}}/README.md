@@ -110,11 +110,7 @@ poetry install
 poetry install --only main
 ```
 
-- To install a new package, run:
-
-```bash
-poetry add <package-name>
-```
+Note: To follow the rest of the instructions in this README (including running tests, generating documentation, and using pre-commit hooks), it is recommended to install all dependencies using `poetry install`.
 
 4. Run Python scripts:
 
@@ -133,20 +129,16 @@ python src/process.py
 - To install all dependencies from pyproject.toml, run:
 
 ```bash
-uv sync
+uv sync --all-extras
 ```
 
 - To install only production dependencies, run:
 
 ```bash
-uv sync --no-dev
+uv sync
 ```
 
-- To install a new package, run:
-
-```bash
-uv add <package-name>
-```
+Note: To follow the rest of the instructions in this README (including running tests, generating documentation, and using pre-commit hooks), it is recommended to install all dependencies using `uv sync --all-extras`.
 
 3. Run Python scripts:
 
@@ -188,11 +180,7 @@ pip install -r requirements-dev.txt
 pip install -r requirements.txt
 ```
 
-- To install a new package, run:
-
-```bash
-pip install <package-name>
-```
+Note: To follow the rest of the instructions in this README (including running tests, generating documentation, and using pre-commit hooks), it is recommended to install all dependencies using `pip install -r requirements-dev.txt`.
 
 4. Run Python scripts:
 
