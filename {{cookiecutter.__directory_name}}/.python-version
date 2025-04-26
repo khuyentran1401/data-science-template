@@ -1,0 +1,3 @@
+{%- if cookiecutter.dependency_manager == "uv" -%}
+{{ cookiecutter.compatible_python_versions.replace(">=", "") }}
+{%- endif -%} 
