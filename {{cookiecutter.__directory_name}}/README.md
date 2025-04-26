@@ -5,11 +5,11 @@
 * [hydra](https://hydra.cc/): Manage configuration files - [article](https://codecut.ai/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
 * [pdoc](https://github.com/pdoc3/pdoc): Automatically create an API documentation for your project
 * [pre-commit plugins](https://pre-commit.com/): Automate code reviewing formatting
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://codecut.ai/poetry-a-better-way-to-manage-python-dependencies/)
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 * [uv](https://github.com/astral-sh/uv): Ultra-fast Python package installer and resolver
-{%- endif -%}
+{%- endif %}
 
 ## Project Structure
 
@@ -31,16 +31,16 @@
 ├── .gitignore                      # ignore files that cannot commit to Git
 ├── models                          # store models
 ├── notebooks                       # store notebooks
-{%- if cookiecutter.dependency_manager == "pip" -%}
+{%- if cookiecutter.dependency_manager == "pip" %}
 ├── pyproject.toml                  # Configure black
-{%- elif cookiecutter.dependency_manager == "poetry" -%}
+{%- elif cookiecutter.dependency_manager == "poetry" %}
 ├── .pre-commit-config.yaml         # configurations for pre-commit
 ├── pyproject.toml                  # dependencies for poetry
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 ├── .pre-commit-config.yaml         # configurations for pre-commit
 ├── .python-version                 # specify Python version for the project
 ├── pyproject.toml                  # project metadata and dependencies
-{%- endif -%}
+{%- endif %}
 ├── README.md                       # describe your project
 ├── src                             # store source code
 │   ├── __init__.py                 # make src a Python module
@@ -87,7 +87,7 @@ git push -u origin main
 
 ## Set up the environment
 
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 1. Install [Poetry](https://python-poetry.org/docs/#installation)
 
 2. Activate the virtual environment:
@@ -121,7 +121,7 @@ poetry run python src/process.py
 # Or after activating the virtual environment
 python src/process.py
 ```
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 2. Install dependencies:
@@ -145,7 +145,7 @@ Note: To follow the rest of the instructions in this README (including running t
 ```bash
 uv run src/process.py
 ```
-{%- else -%}
+{%- else %}
 1. Create the virtual environment:
 
 ```bash
@@ -188,26 +188,26 @@ Note: To follow the rest of the instructions in this README (including running t
 # After activating the virtual environment
 python src/process.py
 ```
-{%- endif -%}
+{%- endif %}
 
 ## Set up pre-commit hooks
 
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 Set up pre-commit:
 ```bash
 poetry run pre-commit install
 ```
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 Set up pre-commit:
 ```bash
 uv run pre-commit install
 ```
-{%- else -%}
+{%- else %}
 Set up pre-commit:
 ```bash
 pre-commit install
 ```
-{%- endif -%}
+{%- endif %}
 
 The pre-commit configuration is already set up in `.pre-commit-config.yaml`. This includes:
 * `ruff`: A fast Python linter and code formatter that will automatically fix issues when possible
@@ -222,19 +222,19 @@ The project uses Hydra to manage configurations. You can view and modify these c
 
 To view available configurations:
 
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 ```bash
 poetry run python src/process.py --help
 ```
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 ```bash
 uv run src/process.py --help
 ```
-{%- else -%}
+{%- else %}
 ```bash
 python src/process.py --help
 ```
-{%- endif -%}
+{%- endif %}
 
 Output:
 
@@ -265,19 +265,19 @@ data:
 
 To override configurations (for example, changing the input data file):
 
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 ```bash
 poetry run python src/process.py data.raw=sample2.csv
 ```
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 ```bash
 uv run src/process.py data.raw=sample2.csv
 ```
-{%- else -%}
+{%- else %}
 ```bash
 python src/process.py data.raw=sample2.csv
 ```
-{%- endif -%}
+{%- endif %}
 
 Output:
 
@@ -290,7 +290,7 @@ You can override any configuration value shown in the help output. Multiple over
 
 ## Auto-generate API documentation
 
-{%- if cookiecutter.dependency_manager == "poetry" -%}
+{%- if cookiecutter.dependency_manager == "poetry" %}
 Generate static documentation:
 ```bash
 poetry run pdoc src -o docs
@@ -300,7 +300,7 @@ Start documentation server (available at http://localhost:8080):
 ```bash
 poetry run pdoc src --http localhost:8080
 ```
-{%- elif cookiecutter.dependency_manager == "uv" -%}
+{%- elif cookiecutter.dependency_manager == "uv" %}
 Generate static documentation:
 ```bash
 uv run pdoc src -o docs
@@ -310,7 +310,7 @@ Start documentation server (available at http://localhost:8080):
 ```bash
 uv run pdoc src --http localhost:8080
 ```
-{%- else -%}
+{%- else %}
 Generate static documentation:
 ```bash
 pdoc src -o docs
@@ -320,6 +320,6 @@ Start documentation server (available at http://localhost:8080):
 ```bash
 pdoc src --http localhost:8080
 ```
-{%- endif -%}
+{%- endif %}
 
 The documentation will be generated from your docstrings and type hints in your Python files. The static documentation will be saved in the `docs` directory, while the live server allows you to view the documentation with hot-reloading as you make changes.
