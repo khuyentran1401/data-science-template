@@ -186,7 +186,7 @@ Note: To follow the rest of the instructions in this README (including running t
 
 ```bash
 # After activating the virtual environment
-python src/process.py
+python3 src/process.py
 ```
 {%- endif %}
 
@@ -232,7 +232,7 @@ uv run src/process.py --help
 ```
 {%- else %}
 ```bash
-python src/process.py --help
+python3 src/process.py --help
 ```
 {%- endif %}
 
@@ -275,7 +275,7 @@ uv run src/process.py data.raw=sample2.csv
 ```
 {%- else %}
 ```bash
-python src/process.py data.raw=sample2.csv
+python3 src/process.py data.raw=sample2.csv
 ```
 {%- endif %}
 
